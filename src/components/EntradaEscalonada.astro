@@ -1,0 +1,23 @@
+---
+/**
+ * Contenedor que escalona la aparición de sus hijos.
+ *
+ * La escalonada del encabezado y la de las cifras no dependían del scroll: se
+ * disparaban al montar, con 0,05s de espera inicial y 0,07s entre bloques, cada
+ * uno durante 0,6s. Eso son solo reglas de CSS (`:nth-child`), sin JavaScript:
+ * arrancan al cargar la hoja de estilos y el retardo se aplica con `both`.
+ *
+ * El orden de los hijos es el del markup, igual que cuando React los mapeaba
+ * por índice.
+ */
+export interface Props {
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { class: className, ...resto } = Astro.props;
+---
+
+<div class={className} data-escalonado {...resto}>
+  <slot />
+</div>

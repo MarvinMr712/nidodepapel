@@ -1,0 +1,43 @@
+---
+/**
+ * Cinta horizontal de títulos que se desplaza sola.
+ * Duplica la lista para que el bucle no tenga costura visible.
+ *
+ * El `translate3d(-50%)` de la animación está calculado sobre esta duplicación.
+ * Si algún día se quita, hay que revisar el keyframe `cinta` en globals.css.
+ *
+ * Con menos movimiento la cinta se quita del todo. El script lo hace al cargar;
+ * el HTML lleva la cinta para que sin JavaScript no desaparezca contenido.
+ */
+export interface Props {
+  titulos: string[];
+}
+
+const { titulos } = Astro.props;
+const fila = [...titulos, ...titulos];
+---
+
+{
+  titulos.length > 0 && (
+    <div
+      aria-hidden="true"
+      class="overflow-hidden border-y border-linea bg-papel py-4"
+      data-cinta
+    >
+      <div class="cinta-track flex w-max gap-3 will-change-transform">
+        {fila.map((t) => (
+          <span class="whitespace-nowrap text-sm text-tinta-suave pr-3">
+            {t}
+            <span class="text-salvia/70 pl-3">·</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+<script>
+  import { quitarSiMenosMovimiento } from "@/scripts/movimiento";
+
+  quitarSiMenosMovimiento("[data-cinta]");
+</script>

@@ -1,0 +1,271 @@
+---
+import { SITE, enlaceWhatsApp, getCategorias } from "@/lib/catalogo";
+import { absoluta, ruta, sinBase } from "@/lib/rutas";
+import "../styles/globals.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  /** Ruta canónica de la página: "/catalogo", "/libros/xyz". Sin barra final. */
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: "website" | "article";
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = `${SITE.lema}. ${SITE.descripcion}`,
+  canonical = "/",
+  ogTitle,
+  ogDescription = description,
+  ogType = "website",
+  ogImage = "/og.jpg",
+} = Astro.props;
+
+const categorias = getCategorias();
+const wa = enlaceWhatsApp();
+
+/** Mismo formato de título que el sitio anterior: "%s · Nido de Papel". */
+const tituloFinal = title ? `${title} · ${SITE.nombre}` : `${SITE.nombre} — Biblioteca rotativa de cuentos en Lima`;
+
+const NAV = [
+  { href: "/catalogo", label: "Catálogo" },
+  { href: "/como-funciona", label: "Cómo funciona" },
+  { href: "/etapas", label: "Por edad" },
+  { href: "/categorias", label: "Categorías" },
+];
+
+/*
+ * Marca el enlace del menú que lleva a la página actual. Va con `aria-current`,
+ * que no se ve pero sí lo anuncia un lector de pantalla.
+ *
+ * No se usa `data-activo` a propósito: el CSS tiene una regla
+ * `.subrayado[data-activo="true"]` que Sinclair dejó escrita, pero ningún
+ * componente del sitio original la activaba nunca. Ponerla aquí dibujaría un
+ * subrayado permanente bajo el enlace actual, y el diseño aprobado solo
+ * muestra ese subrayado al pasar el mouse.
+ */
+const rutaActual = sinBase(Astro.url.pathname);
+const esActual = (href: string) => rutaActual === href;
+
+const anio = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{tituloFinal}</title>
+    <meta name="description" content={description} />
+    <meta name="application-name" content={SITE.nombre} />
+    <link rel="canonical" href={absoluta(canonical)} />
+
+    <meta property="og:site_name" content={SITE.nombre} />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={ogTitle ?? tituloFinal} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={absoluta(ogImage)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content={`${SITE.nombre} — Biblioteca rotativa de cuentos infantiles`}
+    />
+    <meta property="og:url" content={absoluta(canonical)} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={absoluta(ogImage)} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href={ruta("/favicon-32.png")} />
+    <link rel="icon" type="image/png" sizes="128x128" href={ruta("/favicon-128.png")} />
+    <link rel="icon" type="image/webp" href={ruta("/nido-de-papel.webp")} />
+    <link rel="apple-touch-icon" href={ruta("/favicon-128.png")} />
+    <link rel="shortcut icon" href={ruta("/favicon.ico")} />
+    <link rel="sitemap" type="application/xml" href={absoluta("/sitemap.xml")} />
+
+    <!--
+      Marca la página como "con JavaScript". Todas las animaciones de entrada
+      cuelgan de `.js`, así que sin este script el contenido nunca queda
+      oculto: se lee entero, que es justo lo que debe pasar sin JavaScript.
+    -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+
+  <body class="min-h-full flex flex-col">
+    <header class="border-b border-linea bg-papel/85 backdrop-blur sticky top-0 z-20">
+      {/* En movil el nombre se oculta para que el boton no se apriete. */}
+      <div
+        class="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between gap-3 sm:h-20 sm:gap-6"
+      >
+        <a href={ruta("/")} class="flex items-center gap-2.5 sm:gap-3 shrink-0 group">
+          <img
+            src={ruta("/nido-de-papel.webp")}
+            alt=""
+            width={44}
+            height={44}
+            fetchpriority="high"
+            decoding="async"
+            class="logo-flotante w-10 h-10 sm:w-11 sm:h-11 shrink-0"
+          />
+          <span class="font-serif text-lg sm:text-xl text-tinta leading-tight">
+            Nido
+            <span class="hidden min-[420px]:inline"> de Papel</span>
+          </span>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 text-sm text-tinta-suave">
+          {
+            NAV.map((n) => (
+              <a
+                href={ruta(n.href)}
+                class="subrayado hover:text-salvia-oscuro"
+                aria-current={esActual(n.href) ? "page" : undefined}
+              >
+                {n.label}
+              </a>
+            ))
+          }
+        </nav>
+
+        <a
+          href={wa}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="boton pulsable text-sm bg-salvia-oscuro text-papel px-4 sm:px-5 py-2.5 rounded-full hover:bg-[#556339] transition-colors shrink-0 whitespace-nowrap"
+        >
+          Reservar
+        </a>
+      </div>
+
+      {/* Menú en movil: fila desplazable, siempre visible sin abrir nada. */}
+      <nav
+        aria-label="Navegación principal"
+        class="lg:hidden border-t border-linea/70 overflow-x-auto"
+      >
+        <ul class="mx-auto max-w-6xl px-5 flex gap-6 text-sm text-tinta-suave whitespace-nowrap">
+          {
+            NAV.map((n) => (
+              <li>
+                <a
+                  href={ruta(n.href)}
+                  class="block py-2.5 hover:text-salvia-oscuro"
+                  aria-current={esActual(n.href) ? "page" : undefined}
+                >
+                  {n.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-linea bg-papel mt-20">
+      <div class="mx-auto max-w-6xl px-5 py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <img
+            src={ruta("/nido-de-papel.webp")}
+            alt=""
+            width={64}
+            height={64}
+            loading="lazy"
+            decoding="async"
+            class="w-16 h-16 mb-3"
+          />
+          <p class="font-serif text-lg mb-1">{SITE.nombre}</p>
+          <p class="text-sm text-salvia-oscuro italic mb-3">{SITE.lema}</p>
+          <p class="text-sm text-tinta-suave leading-relaxed">
+            Biblioteca rotativa de cuentos infantiles. Lima, Perú.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium mb-3">Categorías</p>
+          <ul class="space-y-2 text-sm text-tinta-suave">
+            {
+              categorias.map((c) => (
+                <li>
+                  <a href={ruta(`/categorias/${c.slug}`)} class="hover:text-salvia-oscuro">
+                    {c.nombre}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium mb-3">Edades</p>
+          <ul class="space-y-2 text-sm text-tinta-suave">
+            <li>
+              <a href={ruta("/etapas/primeros-anos")} class="hover:text-salvia-oscuro">
+                Primeros años
+              </a>
+            </li>
+            <li>
+              <a href={ruta("/etapas/pequenos-lectores")} class="hover:text-salvia-oscuro">
+                Pequeños lectores
+              </a>
+            </li>
+            <li>
+              <a href={ruta("/etapas")} class="subrayado hover:text-salvia-oscuro">
+                Todas las edades
+              </a>
+            </li>
+            <li>
+              <a href={ruta("/etapas/primeros-anos")} class="subrayado hover:text-salvia-oscuro">
+                Primeros años
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-sm font-medium mb-3">Contacto</p>
+          <ul class="space-y-2 text-sm text-tinta-suave">
+            <li>
+              <a
+                href={wa}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="subrayado hover:text-salvia-oscuro"
+              >
+                WhatsApp {SITE.whatsappVisible}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`mailto:${SITE.email}`}
+                class="subrayado hover:text-salvia-oscuro"
+              >
+                {SITE.email}
+              </a>
+            </li>
+            <li>
+              <a href={ruta("/catalogo")} class="subrayado hover:text-salvia-oscuro">
+                Ver catálogo completo
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-linea">
+        <p class="mx-auto max-w-6xl px-5 py-6 text-xs text-tinta-suave">
+          © {anio} {SITE.nombre}. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+---
+import type { GetStaticPaths } from "astro";
+import Base from "@/layouts/Base.astro";
+import LibroCard from "@/components/LibroCard.astro";
+import { getCategorias, getCategoria, getLibrosPorCategoria } from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+export const getStaticPaths = (() =>
+  getCategorias().map((c) => ({
+    params: { slug: c.slug },
+    props: { slug: c.slug },
+  }))) satisfies GetStaticPaths;
+
+const { slug } = Astro.props;
+const cat = getCategoria(slug);
+if (!cat) return Astro.redirect("/categorias");
+
+const libros = getLibrosPorCategoria(cat.slug);
+---
+
+<Base
+  title={cat.nombre}
+  description={cat.descripcion}
+  canonical={`/categorias/${cat.slug}`}
+>
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <nav class="text-sm text-tinta-suave mb-8">
+      <a href={ruta("/categorias")} class="hover:text-salvia-oscuro">Categorías</a>
+      {" / "}
+      <span class="text-tinta">{cat.nombre}</span>
+    </nav>
+
+    <h1 class="text-4xl sm:text-5xl mb-4">{cat.nombre}</h1>
+    <p class="text-tinta-suave max-w-2xl leading-relaxed mb-4">{cat.descripcion}</p>
+    <p class="text-sm text-tinta-suave mb-14">
+      {libros.length} {libros.length === 1 ? "libro" : "libros"} en esta categoría.
+    </p>
+
+    {
+      libros.length === 0 ? (
+        <p class="border border-dashed border-linea rounded-xl py-20 text-center text-tinta-suave">
+          Todavía no hay libros en esta categoría.
+        </p>
+      ) : (
+        <div class="grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {libros.map((l) => (
+            <LibroCard libro={l} />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</Base>

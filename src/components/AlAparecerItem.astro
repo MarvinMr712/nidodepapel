@@ -1,0 +1,23 @@
+---
+/**
+ * Igual que `AlAparecer`, pero emite un `<li>` en vez de un `<div>`.
+ *
+ * En la página "cómo funciona" la lista del ciclo es un `<ol>`, y cada paso
+ * tenía que ser un `<li>` para que la numeración sea correcta. Un componente de
+ * Astro no puede cambiar la etiqueta que emite, asi que hace falta este gemelo.
+ */
+export interface Props {
+  delay?: number;
+  distancia?: number;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { delay = 0, distancia = 24, class: className, ...resto } = Astro.props;
+
+const estilo = `--aparcer-delay:${delay}s;--aparcer-y:${distancia}px`;
+---
+
+<li class={className} data-aparecer style={estilo} {...resto}>
+  <slot />
+</li>

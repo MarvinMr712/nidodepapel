@@ -1,0 +1,19 @@
+---
+/**
+ * Bloque hijo de una `EntradaEscalonada`.
+ *
+ * Emite siempre un `<div>` sin animación propia: el retardo y el estado inicial
+ * los pone la regla `.js [data-escalonado] > *` según la posición del hermano,
+ * que es lo que hace que el grupo entre por pasos.
+ */
+export interface Props {
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { class: className, ...resto } = Astro.props;
+---
+
+<div class={className} {...resto}>
+  <slot />
+</div>

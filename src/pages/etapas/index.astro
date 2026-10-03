@@ -1,0 +1,105 @@
+---
+import Base from "@/layouts/Base.astro";
+import LibroCard from "@/components/LibroCard.astro";
+import {
+  getEtapas,
+  getLibrosPorEtapa,
+  rangoEdad,
+  rangoEtapa,
+} from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+const etapas = getEtapas();
+---
+
+<Base
+  title="Por edad"
+  description="Elige el rango de edad de tu hijo y mira los títulos de Nido de Papel recomendados para esa etapa."
+  canonical="/etapas"
+>
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <p class="text-sm text-salvia-oscuro tracking-wide uppercase mb-3">Por edad</p>
+    <h1 class="text-4xl sm:text-5xl mb-3">¿Qué edad tiene tu hijo?</h1>
+    <p class="text-tinta-suave max-w-2xl leading-relaxed mb-12">
+      Cada etapa reúne los títulos que un niño puede sostener en ese momento. Elige
+      un rango y mira su lista.
+    </p>
+
+    {/* Selector de rango. En movil se apilan; en escritorio van en fila. */}
+    <div
+      role="group"
+      aria-label="Elige un rango de edad"
+      class="grid gap-3 sm:grid-cols-3 mb-16"
+    >
+      {
+        etapas.map((e) => {
+          const total = getLibrosPorEtapa(e.slug).length;
+          return (
+            <a
+              href={ruta(`/etapas/${e.slug}`)}
+              class="tarjeta group rounded-2xl border border-linea bg-papel p-6 hover:border-salvia/60"
+            >
+              <p class="font-serif text-3xl text-salvia-oscuro mb-1">
+                {rangoEtapa(e)}
+              </p>
+              <p class="text-xs text-tinta-suave mb-3">años</p>
+              <h2 class="text-xl mb-2 group-hover:text-salvia-oscuro transition-colors">
+                {e.nombre}
+              </h2>
+              <p class="text-sm text-tinta-suave leading-relaxed mb-4">
+                {e.descripcion}
+              </p>
+              <p class="text-sm text-salvia-oscuro">
+                {total} {total === 1 ? "título" : "títulos"} →
+              </p>
+            </a>
+          );
+        })
+      }
+    </div>
+
+    {/* Vista rápida del primer título de cada etapa, como prueba de que hay stock. */}
+    <section>
+      <h2 class="text-2xl sm:text-3xl mb-2">Una muestra de cada etapa</h2>
+      <p class="text-tinta-suave leading-relaxed mb-10">
+        Estos son algunos de los títulos disponibles. La lista completa de cada etapa
+        está en su página.
+      </p>
+
+      <div class="space-y-12">
+        {
+          etapas.map((e) => {
+            const todos = getLibrosPorEtapa(e.slug);
+            const libros = todos.slice(0, 4);
+            if (libros.length === 0) return null;
+            return (
+              <div>
+                <div class="flex flex-wrap items-baseline justify-between gap-3 mb-5">
+                  <h3 class="text-xl">
+                    <span class="text-salvia-oscuro">{rangoEtapa(e)} años</span> ·{" "}
+                    {e.nombre}
+                  </h3>
+                  <a
+                    href={ruta(`/etapas/${e.slug}`)}
+                    class="text-sm text-salvia-oscuro hover:text-[#4E5C3B]"
+                  >
+                    Ver los {todos.length} títulos →
+                  </a>
+                </div>
+
+                <ul class="grid gap-5 grid-cols-2 md:grid-cols-4">
+                  {libros.map((l) => (
+                    <li class="min-w-0">
+                      <p class="text-xs text-tinta-suave mb-1">{rangoEdad(l)}</p>
+                      <LibroCard libro={l} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })
+        }
+      </div>
+    </section>
+  </div>
+</Base>

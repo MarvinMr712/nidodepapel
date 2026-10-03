@@ -1,0 +1,55 @@
+---
+import type { Libro } from "@/lib/types";
+import { getCategoria, rangoEdad } from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+interface Props {
+  libro: Libro;
+}
+
+const { libro } = Astro.props;
+const categoria = getCategoria(libro.categoria);
+
+/**
+ * Sin portada de imagen todavía: el inventario migrado no trae fotos.
+ * La inicial del título hace de ancla visual y evita el Broken image.
+ */
+const inicial = libro.titulo
+  .replace(/[¿¡"']/g, "")
+  .trim()
+  .charAt(0)
+  .toUpperCase();
+---
+
+<a
+  href={ruta(`/libros/${libro.slug}`)}
+  class="tarjeta group flex h-full flex-col rounded-xl border border-linea bg-papel overflow-hidden hover:border-salvia/60"
+>
+  <div class="aspect-[4/5] overflow-hidden">
+    <div
+      aria-hidden="true"
+      class="portada-zoom w-full h-full grid place-items-center bg-gradient-to-br from-salvia/15 to-azul/10 text-salvia-oscuro font-serif text-5xl"
+    >
+      {inicial}
+    </div>
+  </div>
+
+  <div class="flex flex-1 flex-col gap-1.5 p-4">
+    <h3
+      class="font-serif text-base leading-snug transition-colors group-hover:text-salvia-oscuro break-words"
+    >
+      {libro.titulo}
+    </h3>
+    <p class="text-xs text-tinta-suave">{libro.autor}</p>
+
+    <p class="mt-1 text-xs text-tinta-suave">{rangoEdad(libro)}</p>
+
+    {
+      categoria && (
+        <p class="mt-auto pt-2 text-[11px] text-salvia-oscuro">
+          {categoria.nombre}
+        </p>
+      )
+    }
+  </div>
+</a>

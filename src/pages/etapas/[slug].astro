@@ -1,0 +1,87 @@
+---
+import type { GetStaticPaths } from "astro";
+import Base from "@/layouts/Base.astro";
+import LibroCard from "@/components/LibroCard.astro";
+import { getEtapas, getEtapa, getLibrosPorEtapa, rangoEtapa } from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+export const getStaticPaths = (() =>
+  getEtapas().map((e) => ({
+    params: { slug: e.slug },
+    props: { slug: e.slug },
+  }))) satisfies GetStaticPaths;
+
+const { slug } = Astro.props;
+const etapa = getEtapa(slug);
+if (!etapa) return Astro.redirect("/etapas");
+
+const etapas = getEtapas();
+const libros = getLibrosPorEtapa(etapa.slug);
+---
+
+<Base
+  title={`${etapa.nombre} (${rangoEtapa(etapa)} años)`}
+  description={etapa.descripcion}
+  canonical={`/etapas/${etapa.slug}`}
+>
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <nav class="text-sm text-tinta-suave mb-8">
+      <a href={ruta("/etapas")} class="hover:text-salvia-oscuro">Por edad</a>
+      {" / "}
+      <span class="text-tinta">{etapa.nombre}</span>
+    </nav>
+
+    <p class="text-sm text-salvia-oscuro mb-3">{rangoEtapa(etapa)} años</p>
+    <h1 class="text-4xl sm:text-5xl mb-4">{etapa.nombre}</h1>
+    <p class="text-tinta-suave max-w-2xl leading-relaxed mb-4">{etapa.descripcion}</p>
+    <p class="text-sm text-tinta-suave mb-10">
+      {libros.length} {libros.length === 1 ? "libro sirve" : "libros sirven"} en esta
+      etapa.
+    </p>
+
+    {/* Cambio de rango: siempre se ven las otras etapas, no solo la actual. */}
+    <nav aria-label="Cambiar de rango de edad" class="mb-12">
+      <p class="text-xs text-tinta-suave mb-3">Ver otra edad</p>
+      <ul class="flex flex-wrap gap-2">
+        {
+          etapas.map((e) => {
+            const actual = e.slug === etapa.slug;
+            return (
+              <li>
+                <a
+                  href={ruta(`/etapas/${e.slug}`)}
+                  aria-current={actual ? "page" : undefined}
+                  class:list={[
+                    "inline-block rounded-full border px-4 py-2 text-sm transition-colors",
+                    actual
+                      ? "bg-salvia-oscuro text-papel border-salvia-oscuro"
+                      : "border-linea bg-papel text-tinta-suave hover:border-salvia/60 hover:text-salvia-oscuro",
+                  ]}
+                >
+                  {rangoEtapa(e)} años
+                  <span class="hidden sm:inline"> · {e.nombre}</span>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+
+    {
+      libros.length === 0 ? (
+        <p class="border border-dashed border-linea rounded-xl py-20 px-5 text-center text-tinta-suave">
+          Todavía no hay libros para esta edad.
+        </p>
+      ) : (
+        <ul class="grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {libros.map((l) => (
+            <li>
+              <LibroCard libro={l} />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</Base>

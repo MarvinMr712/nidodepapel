@@ -1,0 +1,31 @@
+---
+/**
+ * Revela contenido al entrar en pantalla.
+ *
+ * Usa IntersectionObserver en vez de animar al montar: así el efecto funciona
+ * aunque el bloque esté debajo del fold, que es el caso normal en esta web.
+ *
+ * El HTML lleva el número real y las clases de siempre. Lo único que cambia es
+ * que el estado inicial y el final viven en globals.css (`.js [data-aparecer]`),
+ * y un script añade `es-visible` cuando el bloque entra en pantalla. Si el
+ * visitante no tiene JavaScript, la clase `js` nunca se pone en el `<html>` y
+ * nada queda oculto: el contenido se lee igual, que es como se comportaba antes.
+ *
+ * Para escribir `<AlAparecer as="li">` se usa el componente `AlAparecerItem`,
+ * porque un componente no puede cambiar la etiqueta que emite.
+ */
+export interface Props {
+  delay?: number;
+  distancia?: number;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { delay = 0, distancia = 24, class: className, ...resto } = Astro.props;
+
+const estilo = `--aparcer-delay:${delay}s;--aparcer-y:${distancia}px`;
+---
+
+<div class={className} data-aparecer style={estilo} {...resto}>
+  <slot />
+</div>

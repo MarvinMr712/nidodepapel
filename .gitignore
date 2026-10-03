@@ -1,0 +1,30 @@
+# Dependencias y carpeta de compilación
+node_modules/
+dist/
+.astro/
+
+# Datos personales: NUNCA subir. Cada ejemplar tiene un propietario con nombre
+# y apellido, y eso no va a un repositorio.
+src/data/*-privados.json
+src/data/libros-privados.json
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+Thumbs.db:encryptable
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Registros y salidas temporales
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo

@@ -1,0 +1,2911 @@
+{
+  "categorias": [
+    {
+      "slug": "emociones-vinculo",
+      "nombre": "Emociones y vínculo"
+    },
+    {
+      "slug": "habitos-rutinas-valores",
+      "nombre": "Hábitos, rutinas, valores y límites"
+    },
+    {
+      "slug": "conocimiento",
+      "nombre": "Conocimiento"
+    },
+    {
+      "slug": "diversion-imaginacion",
+      "nombre": "Diversión, imaginación, creatividad"
+    },
+    {
+      "slug": "fe",
+      "nombre": "Fe"
+    }
+  ],
+  "etapas": [
+    {
+      "slug": "primeros-anos",
+      "nombre": "Primeros años",
+      "min": 0,
+      "max": 3,
+      "descripcion": "El vínculo marca la diferencia: libros para leer juntos, con voz alta y en casa."
+    },
+    {
+      "slug": "pequenos-lectores",
+      "nombre": "Pequeños lectores",
+      "min": 4,
+      "max": 6,
+      "descripcion": "Empiezan a elegir, a repetir sus favoritos y a preguntar por qué."
+    },
+    {
+      "slug": "lectores-en-evolucion",
+      "nombre": "Lectores en evolución",
+      "min": 7,
+      "max": 9,
+      "descripcion": "Sostienen historias más largas, buscan temas propios y construyen hábito."
+    }
+  ],
+  "libros": [
+    {
+      "id": "lib_006",
+      "slug": "10-cuentos-para-dormir-de-disney",
+      "titulo": "10 cuentos para dormir de disney",
+      "autor": "Disney",
+      "tema": "dormir",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_007",
+      "slug": "365-cuentos-uno-para-cada-dia",
+      "titulo": "365 Cuentos: uno para cada día",
+      "autor": "Susaeta y Varios",
+      "tema": "Diversión y Historias",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Tomo compilatorio",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_175",
+      "slug": "500-preguntas-y-respuestas-sobre-animales",
+      "titulo": "500 preguntas y respuestas sobre animales",
+      "autor": "Silver Dolphin",
+      "tema": "animales",
+      "categoria": "conocimiento",
+      "formato": "Tapa delgada",
+      "interactivo": false,
+      "formatoOriginal": "Tada delgada ilustrativo",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_008",
+      "slug": "a-tu-lado",
+      "titulo": "A tu lado",
+      "autor": "Motoneta",
+      "tema": "bebes",
+      "categoria": "emociones-vinculo",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_009",
+      "slug": "a-veces-mama-tienes-truenos-en-la-cabeza",
+      "titulo": "A veces mamá tienes truenos en la cabeza",
+      "autor": "Bea Taboada",
+      "tema": "Emociones y Vínculo",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_011",
+      "slug": "a-veces-me-enojo",
+      "titulo": "A veces me enojo",
+      "autor": "Timothy Knapman",
+      "tema": "Emociones y Rabietas",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_012",
+      "slug": "a-veces-no-quiero",
+      "titulo": "A veces no quiero",
+      "autor": "Timothy Knapman",
+      "tema": "Emociones y Rabietas",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_013",
+      "slug": "abecemociones",
+      "titulo": "Abecemociones",
+      "autor": "Bruño",
+      "tema": "Emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 6,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_014",
+      "slug": "adivina-cuanto-te-quiero-colores",
+      "titulo": "Adivina cuánto te quiero (Colores)",
+      "autor": "Sam McBratney",
+      "tema": "Estimulación y Afecto",
+      "categoria": "conocimiento",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "Cartón grueso / Colores",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_015",
+      "slug": "alegria-y-las-emociones",
+      "titulo": "Alegría y las emociones",
+      "autor": "Disney / IntensaMente",
+      "tema": "Emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Mis Primeros Cuentos",
+      "edadMin": 2,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_016",
+      "slug": "alex-ayuda-a-ordenar-su-cuarto",
+      "titulo": "Alex ayuda a ordenar su cuarto",
+      "autor": "SM editorial",
+      "tema": "habitos",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_017",
+      "slug": "amor-el-libro-de-los-abrazos",
+      "titulo": "Amor (El libro de los abrazos)",
+      "autor": "Trace Moroney",
+      "tema": "Afecto y Emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "Cartón acolchado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_018",
+      "slug": "animales-salvajes-flaps-pop-up",
+      "titulo": "Animales Salvajes (Flaps Pop-up)",
+      "autor": "Libsa",
+      "tema": "Estimulación y Animales",
+      "categoria": "conocimiento",
+      "formato": "Pop-up",
+      "interactivo": true,
+      "formatoOriginal": "Cartón / Pop-up",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_019",
+      "slug": "aqui-estamos-notas-para-vivir-en-el-planeta-tierra",
+      "titulo": "Aquí estamos notas para vivir en el planeta tierra",
+      "autor": "Oliver Jeffers /FCE",
+      "tema": "espacio/planeta",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado- pelicula",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_020",
+      "slug": "atlas-del-cuerpo-humano",
+      "titulo": "Atlas del cuerpo humano",
+      "autor": "Editorial Lexus",
+      "tema": "ciencias",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura interactivo",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_021",
+      "slug": "atlas-del-peru",
+      "titulo": "Atlas del peru",
+      "autor": "Pichoncito",
+      "tema": "geografia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura interactivo",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_022",
+      "slug": "baba-no-quiero-dormir",
+      "titulo": "Baba no quiero dormir",
+      "autor": "Miriam Tirado",
+      "tema": "dormir",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_023",
+      "slug": "baby-animales-y-sus-familias",
+      "titulo": "Baby animales y sus familias",
+      "autor": "Libsa",
+      "tema": "animales",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_025",
+      "slug": "bebe-elefante-y-su-gran-dia",
+      "titulo": "Bebé elefante y su gran día",
+      "autor": "Editorial Lexus",
+      "tema": "Vínculo materno",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura con juguete interactivo",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_026",
+      "slug": "berta-tiene-un-hermanito",
+      "titulo": "Berta tiene un hermanito",
+      "autor": "Salamandra",
+      "tema": "emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_027",
+      "slug": "biblia-di-y-ora",
+      "titulo": "Biblia Di y Ora",
+      "autor": "Diana Storiz",
+      "tema": "Historias bíblicas",
+      "categoria": "fe",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrada",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_028",
+      "slug": "biblia-leer-y-orar-para-la-hora-de-dormir",
+      "titulo": "Biblia Leer y Orar (para la hora de dormir)",
+      "autor": "Janice Emmerson",
+      "tema": "Historias bíblicas",
+      "categoria": "fe",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrada",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_029",
+      "slug": "biblia-viajera-con-jesua-a-todos-lados",
+      "titulo": "Biblia viajera con Jesúa a todos lados",
+      "autor": "ACES",
+      "tema": "Historias bíblicas",
+      "categoria": "fe",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrada",
+      "edadMin": 1,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_024",
+      "slug": "barbara-tiene-una-rabieta",
+      "titulo": "Bárbara tiene una rabieta",
+      "autor": "Marta Altés",
+      "tema": "Emociones y Rabietas",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Cuento ilustrado",
+      "edadMin": 3,
+      "edadMax": 6,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_030",
+      "slug": "camion-de-bomberos",
+      "titulo": "Camión de bomberos",
+      "autor": "Varios",
+      "tema": "Estimulación y Vehículos",
+      "categoria": "conocimiento",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "Cartón / Forma de camión",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_031",
+      "slug": "chabuca-granda",
+      "titulo": "Chabuca Granda",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_032",
+      "slug": "chimoc-y-cabrita-conocen-los-deportes",
+      "titulo": "Chimoc y cabrita conocen los deportes",
+      "autor": "Hermanos Paz",
+      "tema": "habitos",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura ilustrado - musicalizado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_033",
+      "slug": "chimoc-y-pollito-visitan-la-biblioteca",
+      "titulo": "Chimoc y pollito visitan la biblioteca",
+      "autor": "Hermanos Paz",
+      "tema": "habitos",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura ilustrado - musicalizado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_034",
+      "slug": "coco",
+      "titulo": "Coco",
+      "autor": "Editorial Lexus",
+      "tema": "pelicula",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_179",
+      "slug": "color-carne",
+      "titulo": "Color carne",
+      "autor": "Desirée Bela-Lobedde",
+      "tema": "Valores y Autoestima",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 6,
+      "etapas": [
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_035",
+      "slug": "conoce-el-cuerpo-humano",
+      "titulo": "Conoce el cuerpo humano",
+      "autor": "Editorial Lexus",
+      "tema": "ciencias",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_036",
+      "slug": "cosas-que-me-gustan-de-mis-abuelos",
+      "titulo": "Cosas que me gustan de mis abuelos",
+      "autor": "Editorial Lexus",
+      "tema": "cuentos y vinculo",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_037",
+      "slug": "cuando-estalla-la-tormenta",
+      "titulo": "Cuando estalla la tormenta",
+      "autor": "Bea Taboada",
+      "tema": "Emociones y Rabietas",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_038",
+      "slug": "cuando-me-siento-querido",
+      "titulo": "Cuando me siento querido",
+      "autor": "Trace Moroney",
+      "tema": "emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_039",
+      "slug": "cuando-me-siento-solo",
+      "titulo": "Cuando me siento solo",
+      "autor": "Trace Moroney",
+      "tema": "emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_040",
+      "slug": "cuando-tengo-miedo",
+      "titulo": "Cuando tengo miedo",
+      "autor": "Trace Moroney",
+      "tema": "Emociones y Miedos",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 3,
+      "edadMax": 6,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_041",
+      "slug": "cuanto-mama-te-quiere",
+      "titulo": "Cuanto mamá te quiere",
+      "autor": "Terry Pierce",
+      "tema": "Vínculo materno",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_042",
+      "slug": "cuentos-montessori-para-crecer-felices",
+      "titulo": "Cuentos montessori para crecer felices",
+      "autor": "Marta Prada",
+      "tema": "rutina- Montessori",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 6,
+      "etapas": [
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_043",
+      "slug": "descubre-el-cuerpo-humano-datos-curiosos",
+      "titulo": "Descubre el cuerpo humano - datos curiosos",
+      "autor": "Jennie Bradley",
+      "tema": "Ciencia y Aprendizaje",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura con solapas",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_044",
+      "slug": "diez-sorpresa",
+      "titulo": "Diez sorpresa",
+      "autor": "Stephane Kield",
+      "tema": "bebes",
+      "categoria": "conocimiento",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_045",
+      "slug": "dios-te-hizo-especial",
+      "titulo": "Dios te hizo especial",
+      "autor": "Editorial Lexus",
+      "tema": "Fe y Valores",
+      "categoria": "fe",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura acolchada",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_046",
+      "slug": "diversion-en-la-construccion",
+      "titulo": "Diversión en la construcción",
+      "autor": "Gareth Williams",
+      "tema": "Estimulación y Vehículos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Pop-up",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura / pop up",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_047",
+      "slug": "donosaurios-toca-y-siente",
+      "titulo": "Donosaurios toca y siente",
+      "autor": "Silver Dolphin",
+      "tema": "bebes",
+      "categoria": "conocimiento",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_048",
+      "slug": "duerme-negrito",
+      "titulo": "Duerme negrito",
+      "autor": "paloma Valdivia",
+      "tema": "bebes",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_050",
+      "slug": "el-bolso-de-mama",
+      "titulo": "El bolso de mamá",
+      "autor": "Andrea Gago",
+      "tema": "bebes",
+      "categoria": "diversion-imaginacion",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_051",
+      "slug": "el-cuerpo-de-juan",
+      "titulo": "El cuerpo de Juan",
+      "autor": "Editorial Lexus",
+      "tema": "Ciencia y Aprendizaje",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrada",
+      "edadMin": 3,
+      "edadMax": 6,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_052",
+      "slug": "el-cuerpo-humano-aventura-cientifica",
+      "titulo": "El cuerpo humano: Aventura científica",
+      "autor": "Varios",
+      "tema": "Ciencia y Aprendizaje",
+      "categoria": "conocimiento",
+      "formato": "Pop-up",
+      "interactivo": true,
+      "formatoOriginal": "Desplegable / Educativo",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_053",
+      "slug": "el-dia-que-los-crayones-renunciaron",
+      "titulo": "El día que los crayones renunciaron",
+      "autor": "Oliver Jeffers /FCE",
+      "tema": "cuentos y vinculo",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_054",
+      "slug": "el-espacio-exterior",
+      "titulo": "El espacio exterior",
+      "autor": "Ruth Martin y Allan Sanders",
+      "tema": "Espacio y Aprendizaje",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura con solapas",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_055",
+      "slug": "el-gran-libro-de-los-bichos",
+      "titulo": "El gran libro de los bichos",
+      "autor": "Yuval Zommer",
+      "tema": "ciencias",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "None",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_056",
+      "slug": "el-gran-libro-del-mar",
+      "titulo": "El gran libro del mar",
+      "autor": "Yuval Zommer",
+      "tema": "ciencias",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_057",
+      "slug": "el-hambriento-lobo-feroz",
+      "titulo": "El hambriento lobo feroz",
+      "autor": "isabel Menendez",
+      "tema": "Cuentos Clásicos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_058",
+      "slug": "el-hilo-invisible",
+      "titulo": "El hilo invisible",
+      "autor": "Miriam Tirado",
+      "tema": "Emociones y Vínculo",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Cuento ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_060",
+      "slug": "el-mono-bromista",
+      "titulo": "El mono bromista",
+      "autor": "Editorial Lexus",
+      "tema": "animales",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura con puppet",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_061",
+      "slug": "el-monstruo-de-colores",
+      "titulo": "El monstruo de colores",
+      "autor": "Anna Llenas",
+      "tema": "Emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Texturas",
+      "edadMin": 2,
+      "edadMax": 6,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_062",
+      "slug": "el-mounstruo-de-colores",
+      "titulo": "El mounstruo de colores",
+      "autor": "Anna Llenas",
+      "tema": "bebes",
+      "categoria": "emociones-vinculo",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 2,
+      "edadMax": 6,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_064",
+      "slug": "el-mounstruo-de-las-rabietas",
+      "titulo": "El Mounstruo de las rabietas",
+      "autor": "Mar Lopez",
+      "tema": "Emociones y Rabietas",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_065",
+      "slug": "el-mounstruo-de-los-abrazos",
+      "titulo": "El Mounstruo de los abrazos",
+      "autor": "Mar Lopez",
+      "tema": "Autocuidado y Prevención",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_066",
+      "slug": "el-mundo-del-principito",
+      "titulo": "El mundo del Principito",
+      "autor": "Antoine de Saint-Exupéry / Adaptación",
+      "tema": "Clásicos y Valores",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_067",
+      "slug": "el-oceano",
+      "titulo": "El océano",
+      "autor": "Varios",
+      "tema": "Estimulación Sensorial",
+      "categoria": "conocimiento",
+      "formato": "Cartón",
+      "interactivo": true,
+      "formatoOriginal": "Cartón / Textura y Solapas",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_068",
+      "slug": "el-pequeno-edu-no-se-aburre-nunca",
+      "titulo": "El pequeño Edu no se aburre nunca",
+      "autor": "Linne Bie",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_049",
+      "slug": "el-pequeno-libro-de-ir-al-medico",
+      "titulo": "El pequeño libro de ir al médico",
+      "autor": "Timunmas",
+      "tema": "Salud",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura / solapas",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_069",
+      "slug": "el-poder-del-leon",
+      "titulo": "El poder del león",
+      "autor": "Miriam Tirado",
+      "tema": "Autocuidado y Prevención",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_070",
+      "slug": "el-pollito-perdido",
+      "titulo": "El pollito perdido",
+      "autor": "Editorial Lexus",
+      "tema": "Diversión y Aventura",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_071",
+      "slug": "el-pollo-pepe",
+      "titulo": "El pollo Pepe",
+      "autor": "Nick denchfield/SM",
+      "tema": "cuentos y vinculo",
+      "categoria": "diversion-imaginacion",
+      "formato": "Pop-up",
+      "interactivo": true,
+      "formatoOriginal": "desplegable",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_072",
+      "slug": "el-principito-version-pop-up",
+      "titulo": "El Principito (Versión Pop-up)",
+      "autor": "Antoine de Saint-Exupéry",
+      "tema": "Clásicos y Filosofía",
+      "categoria": "diversion-imaginacion",
+      "formato": "Pop-up",
+      "interactivo": true,
+      "formatoOriginal": "Edición Especial Pop-up",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_073",
+      "slug": "el-principito-tu-libro-de-emociones",
+      "titulo": "El principito tu libro de emociones",
+      "autor": "De Saint, Antonei",
+      "tema": "emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_180",
+      "slug": "elmer",
+      "titulo": "Elmer",
+      "autor": "David Mckee",
+      "tema": "Valores y Autoestima",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_074",
+      "slug": "en-el-espacio-misterioso",
+      "titulo": "En el espacio misterioso",
+      "autor": "María Mañero Cámara",
+      "tema": "Espacio y Diversión",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_075",
+      "slug": "en-la-selva",
+      "titulo": "En la Selva",
+      "autor": "El Gato de Hojalata",
+      "tema": "Estimulación y Animales",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura / interactivo",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_076",
+      "slug": "eres-un-regalo-de-dios",
+      "titulo": "Eres un regalo de Dios",
+      "autor": "Varios",
+      "tema": "Afecto y Fe",
+      "categoria": "fe",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura acolchada",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_077",
+      "slug": "eres-unico",
+      "titulo": "Eres único",
+      "autor": "Incabooks",
+      "tema": "Valores y Autoestima",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_078",
+      "slug": "estaba-la-rana",
+      "titulo": "Estaba la rana",
+      "autor": "paloma Valdivia",
+      "tema": "bebes",
+      "categoria": "diversion-imaginacion",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_079",
+      "slug": "explora-el-sistema-solar",
+      "titulo": "Explora el sistema solar",
+      "autor": "Rhys Jefferys",
+      "tema": "Espacio y Aprendizaje",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura con solapas",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_080",
+      "slug": "exploradores-de-la-historia",
+      "titulo": "Exploradores de la historia",
+      "autor": "Libsa",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_081",
+      "slug": "fernando-de-szyslo",
+      "titulo": "Fernando de Szyslo",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_082",
+      "slug": "fuera-panales",
+      "titulo": "Fuera Pañales",
+      "autor": "La Pandilla",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa delgada",
+      "interactivo": false,
+      "formatoOriginal": "Tapa delgada e ilustrado",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_083",
+      "slug": "gran-libro-ilustrado-de-la-luna",
+      "titulo": "Gran libro ilustrado de la luna",
+      "autor": "Usborne",
+      "tema": "espacio/planeta",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_177",
+      "slug": "hola-mundo-dinosaurios",
+      "titulo": "Hola Mundo, Dinosaurios",
+      "autor": "Jill McDonald",
+      "tema": "animales",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_084",
+      "slug": "how-the-grinch-stole-christmas",
+      "titulo": "How the grinch stole christmas",
+      "autor": "Dr. Seuss",
+      "tema": "Inglés",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_085",
+      "slug": "hoy-jugamos-todos",
+      "titulo": "Hoy jugamos todos",
+      "autor": "Alberto Soler",
+      "tema": "Autocuidado y Prevención",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 5,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_086",
+      "slug": "ines-melchor",
+      "titulo": "Ines melchor",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_087",
+      "slug": "insectos-y-bichos",
+      "titulo": "Insectos y bichos",
+      "autor": "Varios",
+      "tema": "Estimulación y Naturaleza",
+      "categoria": "conocimiento",
+      "formato": "Cartón",
+      "interactivo": true,
+      "formatoOriginal": "Cartón / Solapas",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_088",
+      "slug": "insectos-aranas-y-otros-animales",
+      "titulo": "Insectos, arañas y otros animales",
+      "autor": "Pascale Hedelin",
+      "tema": "Estimulación y Animales",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrada",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_089",
+      "slug": "jessica-marquez",
+      "titulo": "Jessica Marquez",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_090",
+      "slug": "jorge-chavez",
+      "titulo": "Jorge Chavez",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_091",
+      "slug": "la-banda",
+      "titulo": "La banda",
+      "autor": "Cocoretto",
+      "tema": "bebes",
+      "categoria": "diversion-imaginacion",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_092",
+      "slug": "la-discusion",
+      "titulo": "La discusión",
+      "autor": "Andrea Gago",
+      "tema": "bebes",
+      "categoria": "diversion-imaginacion",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_093",
+      "slug": "la-fiesteta",
+      "titulo": "La fiesteta",
+      "autor": "Miriam Tirado",
+      "tema": "rutina-destete",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_094",
+      "slug": "la-granja-flaps-pop-up",
+      "titulo": "La granja (Flaps Pop-up)",
+      "autor": "Varios",
+      "tema": "Estimulación y Animales",
+      "categoria": "conocimiento",
+      "formato": "Pop-up",
+      "interactivo": true,
+      "formatoOriginal": "Cartón / Pop-up",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_095",
+      "slug": "la-granja-pequenas-luciernagas",
+      "titulo": "La granja (Pequeñas luciérnagas)",
+      "autor": "Varios",
+      "tema": "Estimulación y Animales",
+      "categoria": "conocimiento",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "Cartón / Cuento nocturno",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_096",
+      "slug": "la-granja-de-zenon-bartolito-bombo",
+      "titulo": "La Granja de Zenón: Bartolito bombo",
+      "autor": "El Reino Infantil",
+      "tema": "Música y Diversión",
+      "categoria": "diversion-imaginacion",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "Cartón / Cuentos de la Granja",
+      "edadMin": 1,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_097",
+      "slug": "la-granja-de-zenon-con-su-guitarra",
+      "titulo": "La Granja de Zenón: Con su guitarra",
+      "autor": "El Reino Infantil",
+      "tema": "Música y Diversión",
+      "categoria": "diversion-imaginacion",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "Cartón / Cuentos de la Granja",
+      "edadMin": 1,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_098",
+      "slug": "la-magia-del-ballet-una-aventura-musical",
+      "titulo": "La magia del ballet una aventura musical",
+      "autor": "Ginnie Hsu",
+      "tema": "danza",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura con musica interactivo",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_099",
+      "slug": "la-montana-de-libros-mas-alta-del-mundo",
+      "titulo": "La montaña de libros mas alta del mundo",
+      "autor": "Rocio bonilla",
+      "tema": "intereses",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_101",
+      "slug": "la-sensacion-extrana",
+      "titulo": "La sensación extraña",
+      "autor": "Hans Schmidt",
+      "tema": "prevencion",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 6,
+      "etapas": [
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_102",
+      "slug": "las-aventuras-de-juanito-y-su-bicileta-amarilla",
+      "titulo": "Las aventuras de juanito y su bicileta amarilla",
+      "autor": "Luigui Valdizan/ Polifonia",
+      "tema": "musicalizado",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_103",
+      "slug": "las-huellas-de-papa",
+      "titulo": "Las huellas de papá",
+      "autor": "Michelle Robinsosn",
+      "tema": "Vínculo paterno",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_105",
+      "slug": "learning-english-with-ozmo-dictionary",
+      "titulo": "Learning english with ozmo Dictionary",
+      "autor": "BBC",
+      "tema": "Inglés",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_106",
+      "slug": "lo-mas-importante",
+      "titulo": "Lo más importante",
+      "autor": "Antonella Abbatello",
+      "tema": "Valores y Autoestima",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_107",
+      "slug": "lobo-estas",
+      "titulo": "Lobo estas",
+      "autor": "Bernardita Ojeda",
+      "tema": "bebes",
+      "categoria": "diversion-imaginacion",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura cartone",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_108",
+      "slug": "los-mas-bellos-cuentos-de-grimm",
+      "titulo": "Los mas bellos cuentos de Grimm",
+      "autor": "Editorial Lexus",
+      "tema": "Cuentos Clásicos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_109",
+      "slug": "los-mas-bellos-cuentos-de-perrault",
+      "titulo": "Los mas bellos cuentos de perrault",
+      "autor": "Editorial Lexus",
+      "tema": "Cuentos Clásicos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_110",
+      "slug": "los-peruguntones",
+      "titulo": "Los Peruguntones",
+      "autor": "Hermanos Paz",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_111",
+      "slug": "los-tres-cerditos-cuentos-clasicos-con-solapas",
+      "titulo": "Los tres cerditos cuentos clasicos con solapas",
+      "autor": "Editorial Lexus",
+      "tema": "bebes",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura con solapas",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_112",
+      "slug": "luana-se-va-a-dormir",
+      "titulo": "Luana se va a dormir",
+      "autor": "Andrea y Claudia Paz",
+      "tema": "Hábitos y Orden",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_104",
+      "slug": "lavate-los-dientes",
+      "titulo": "Lávate los dientes",
+      "autor": "Timunmas",
+      "tema": "Hábitos y Orden",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_113",
+      "slug": "machu-picchu-un-misterio-entre-las-nubes",
+      "titulo": "Machu Picchu un misterio entre las nubes",
+      "autor": "Sergio Vilela",
+      "tema": "Historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_114",
+      "slug": "mama-es-mas-que-tetita",
+      "titulo": "Mamá es más que tetita",
+      "autor": "Mónica Izquierdo",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 1,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_115",
+      "slug": "manos-de-trapo",
+      "titulo": "Manos de trapo",
+      "autor": "Pichoncito",
+      "tema": "cuentos y vinculo",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_116",
+      "slug": "maravillas-naturales-del-mundo",
+      "titulo": "Maravillas naturales del mundo",
+      "autor": "Libsa",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_117",
+      "slug": "marcial-ya-no-usa-panal",
+      "titulo": "Marcial ya no usa pañal",
+      "autor": "Andrea y Claudia Paz",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_118",
+      "slug": "mario-vargas-llosa",
+      "titulo": "Mario Vargas Llosa",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_119",
+      "slug": "martin-chambi",
+      "titulo": "Martin Chambi",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_120",
+      "slug": "mateo-se-viste-solo",
+      "titulo": "Mateo se viste solo",
+      "autor": "Andrea y Claudia Paz",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_121",
+      "slug": "me-ayudas",
+      "titulo": "Me ayudas!",
+      "autor": "Raúl Bermejo",
+      "tema": "Colaboración, empatía",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_176",
+      "slug": "me-encanta-cama-soy",
+      "titulo": "Me encanta cama soy",
+      "autor": "Emma Dodd",
+      "tema": "Valores y Autoestima",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_122",
+      "slug": "mi-abuelo-y-yo",
+      "titulo": "Mi abuelo y yo",
+      "autor": "Editorial Lexus",
+      "tema": "cuentos y vinculo",
+      "categoria": "emociones-vinculo",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "carton grueso",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_123",
+      "slug": "mi-mama-mi-mejor-amiga",
+      "titulo": "Mi mamá mi mejor amiga",
+      "autor": "Editorial Lexus",
+      "tema": "Vínculo materno",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura acolchada",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_124",
+      "slug": "mi-papa-mi-heroe",
+      "titulo": "Mi papá mi héroe",
+      "autor": "Editorial Lexus",
+      "tema": "Vínculo paterno",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura acolchada",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_125",
+      "slug": "mi-pequena-biblia",
+      "titulo": "Mi pequeña Biblia",
+      "autor": "ACES",
+      "tema": "Historias bíblicas",
+      "categoria": "fe",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrada",
+      "edadMin": 1,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_126",
+      "slug": "mi-primer-atlas-mundial",
+      "titulo": "Mi primer Atlas Mundial",
+      "autor": "Editorial Lexus",
+      "tema": "geografia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura ilustrado con muchas solapas",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_127",
+      "slug": "mi-primer-libro-de-emociones-y-sentimientos",
+      "titulo": "Mi primer libro de emociones y sentimientos",
+      "autor": "Emily Sharrot",
+      "tema": "Emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_128",
+      "slug": "mickey-descubre-insectos",
+      "titulo": "Mickey descubre insectos",
+      "autor": "Disney",
+      "tema": "Estimulación y Animales",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Mis Primeros Cuentos",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_129",
+      "slug": "mickey-premio-a-la-amistad",
+      "titulo": "Mickey: Premio a la amistad",
+      "autor": "Disney",
+      "tema": "Valores y Amistad",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Troquelado con ruedas",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_130",
+      "slug": "minnie-dias-de-diversion",
+      "titulo": "Minnie dias de diversion",
+      "autor": "Editorial Lexus",
+      "tema": "pelicula-serie",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura interactivo",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_131",
+      "slug": "mis-mejores-amigos",
+      "titulo": "Mis mejores amigos",
+      "autor": "Editorial Lexus",
+      "tema": "Diversión y Historias",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura acolchada",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_132",
+      "slug": "mis-primeras-100-palabras",
+      "titulo": "Mis primeras 100 palabras",
+      "autor": "Varios",
+      "tema": "Estimulación y Lenguaje",
+      "categoria": "conocimiento",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "Cartón grueso",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_133",
+      "slug": "mis-primeras-poesias",
+      "titulo": "Mis primeras poesías",
+      "autor": "Varios",
+      "tema": "Literatura y Poesía",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_134",
+      "slug": "moana-popup-sorpresa",
+      "titulo": "Moana popup sorpresa",
+      "autor": "DK",
+      "tema": "pelicula",
+      "categoria": "diversion-imaginacion",
+      "formato": "Pop-up",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura con pop-up",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_135",
+      "slug": "monumentos-del-mundo",
+      "titulo": "Monumentos del mundo",
+      "autor": "Libsa",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_136",
+      "slug": "nos-tratamos-bien",
+      "titulo": "Nos tratamos Bien",
+      "autor": "Lucía Serrano",
+      "tema": "Valores y Convivencia",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Cuento ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_138",
+      "slug": "olivia-la-espia",
+      "titulo": "Olivia la espía",
+      "autor": "Fondo de cultura económico",
+      "tema": "Diversión y Aventura",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 6,
+      "etapas": [
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_178",
+      "slug": "olivia-y-su-banda",
+      "titulo": "Olivia y su banda",
+      "autor": "Fondo de cultura económico",
+      "tema": "Diversión y Aventura",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 6,
+      "etapas": [
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_139",
+      "slug": "one-fish-by-dr-seuss",
+      "titulo": "One fish by dr seuss",
+      "autor": "Dr. Seuss",
+      "tema": "Inglés",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_140",
+      "slug": "osito-tito-vamos-a-construir",
+      "titulo": "Osito Tito - vamos a construir",
+      "autor": "Benji Davies",
+      "tema": "Estimulación y Vehículos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura / solapas",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_141",
+      "slug": "panis-angelicus",
+      "titulo": "Panis Angelicus",
+      "autor": "Varios",
+      "tema": "Fe y Valores",
+      "categoria": "fe",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_142",
+      "slug": "pinocchio",
+      "titulo": "Pinocchio",
+      "autor": "Tony Wolf / Carlo Collodi",
+      "tema": "Cuentos Clásicos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_143",
+      "slug": "planeta-tierra",
+      "titulo": "Planeta Tierra",
+      "autor": "Louis Weber",
+      "tema": "Espacio y Aprendizaje",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura con botones",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_144",
+      "slug": "primeras-100-palabras-de-la-biblia",
+      "titulo": "Primeras 100 palabras de la Biblia",
+      "autor": "Varios",
+      "tema": "Estimulación y Fe",
+      "categoria": "fe",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "Cartón grueso",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_145",
+      "slug": "que-necesito-cuando-me-enfado",
+      "titulo": "Qué necesito cuando me enfado?",
+      "autor": "Tania García",
+      "tema": "Emociones y Rabietas",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 6,
+      "etapas": [
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_146",
+      "slug": "que-son-los-buenos-habitos",
+      "titulo": "Qué son los buenos hábitos?",
+      "autor": "Christine Mesnard",
+      "tema": "Hábitos y Orden",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_147",
+      "slug": "raquel-y-johnny-puedo-hacerlo",
+      "titulo": "Raquel y Johnny ¡Puedo hacerlo!",
+      "autor": "Editorial Lexus",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_148",
+      "slug": "si-es-si-no-es-no-y-siempre-lo-decido-yo",
+      "titulo": "Si es Si, No es No, y siempre lo decido yo",
+      "autor": "Megan Madison",
+      "tema": "Autocuidado y Prevención",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa delgada",
+      "interactivo": false,
+      "formatoOriginal": "Tapa delgada ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_149",
+      "slug": "siempre-limpios",
+      "titulo": "Siempre limpios",
+      "autor": "La Pandilla",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa delgada",
+      "interactivo": false,
+      "formatoOriginal": "Tapa delgada e ilustrado",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_150",
+      "slug": "simba-explora-la-selva",
+      "titulo": "Simba explora la selva",
+      "autor": "Disney",
+      "tema": "Diversión y Aventura",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Mis Primeros Cuentos",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_151",
+      "slug": "sinfonia-de-animales",
+      "titulo": "Sinfonia de animales",
+      "autor": "Dan Brown",
+      "tema": "danza",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura con musica interactivo",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_152",
+      "slug": "sonido-de-vehiculos",
+      "titulo": "Sonido de vehÍculos",
+      "autor": "Editorial Lexus",
+      "tema": "transportes",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "con sonidos interactivo",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_154",
+      "slug": "soy-educado",
+      "titulo": "Soy Educado",
+      "autor": "Varios",
+      "tema": "Valores y Convivencia",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "Cartón grueso",
+      "edadMin": 2,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_155",
+      "slug": "soy-generoso",
+      "titulo": "Soy Generoso",
+      "autor": "Varios",
+      "tema": "Valores y Convivencia",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "Cartón grueso",
+      "edadMin": 2,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_156",
+      "slug": "soy-valiente",
+      "titulo": "Soy Valiente",
+      "autor": "Varios",
+      "tema": "Valores y Emociones",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Cartón grueso",
+      "interactivo": false,
+      "formatoOriginal": "Cartón grueso",
+      "edadMin": 2,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_157",
+      "slug": "susana-baca",
+      "titulo": "Susana Baca",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_153",
+      "slug": "sonidos-de-vehiculos",
+      "titulo": "Sónidos de vehículos",
+      "autor": "Editorial Lexus",
+      "tema": "Estimulación y Vehículos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / con sonido",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_158",
+      "slug": "tengo-un-volcan",
+      "titulo": "Tengo un volcán",
+      "autor": "Miriam Tirado",
+      "tema": "Emociones y Rabietas",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_159",
+      "slug": "teresa-izquierdo",
+      "titulo": "Teresa Izquierdo",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_160",
+      "slug": "tesoro-de-cuentos-con-sonido-disney",
+      "titulo": "Tesoro de cuentos con Sonido - Disney",
+      "autor": "Disney",
+      "tema": "Películas",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura acolchada",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_161",
+      "slug": "the-b-book",
+      "titulo": "The B book",
+      "autor": "Stan berenstein",
+      "tema": "Inglés",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura ilustrado",
+      "edadMin": 4,
+      "edadMax": 7,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_163",
+      "slug": "topito-terremoto",
+      "titulo": "Topito Terremoto",
+      "autor": "Anna Llenas",
+      "tema": "Emociones y energía",
+      "categoria": "emociones-vinculo",
+      "formato": "Cartón",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura cartón",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_162",
+      "slug": "tono-y-la-hora-del-bano",
+      "titulo": "Toño y la hora del baño",
+      "autor": "Andrea y Claudia Paz",
+      "tema": "Hábitos y Orden",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_164",
+      "slug": "tu-cuerpo-es-tuyo",
+      "titulo": "Tu cuerpo es tuyo",
+      "autor": "Lucía Serrano",
+      "tema": "Autocuidado y Prevención",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Cuento ilustrado",
+      "edadMin": 2,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_166",
+      "slug": "tuntun",
+      "titulo": "Tuntun",
+      "autor": "Anya Damiron",
+      "tema": "Cuentos Clásicos",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "tapa dura musicalizado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_167",
+      "slug": "una-pulga-en-el-corazon",
+      "titulo": "Una pulga en el corazón",
+      "autor": "Ana Vera",
+      "tema": "Cambios y aventura",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura ilustrado",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_168",
+      "slug": "vamos-a-lavarnos-las-manos",
+      "titulo": "Vamos a lavarnos las manos",
+      "autor": "Amanda Gummer",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Tapa dura / solapas",
+      "edadMin": 1,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_169",
+      "slug": "voy-al-doctor",
+      "titulo": "Voy al doctor",
+      "autor": "Crezco sano",
+      "tema": "Salud",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura acolchada",
+      "edadMin": 0,
+      "edadMax": 2,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_170",
+      "slug": "wonder-todos-somos-unicos",
+      "titulo": "Wonder todos somos unicos",
+      "autor": "Raquel Palacio",
+      "tema": "emociones",
+      "categoria": "emociones-vinculo",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "libro de personalidad",
+      "edadMin": 3,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_171",
+      "slug": "woody-ordena-su-cuarto",
+      "titulo": "Woody ordena su cuarto",
+      "autor": "Disney",
+      "tema": "Hábitos y Orden",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Mis Primeros Cuentos",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_173",
+      "slug": "ya-somos-mayores",
+      "titulo": "Ya somos mayores",
+      "autor": "Varios",
+      "tema": "Autonomía y Crecimiento",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura",
+      "edadMin": 2,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_174",
+      "slug": "zambo-cavero",
+      "titulo": "Zambo Cavero",
+      "autor": "Pichoncito",
+      "tema": "historia",
+      "categoria": "conocimiento",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "tapa dura",
+      "edadMin": 5,
+      "edadMax": 9,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_001",
+      "slug": "feliz-navidad-chip-y-dale",
+      "titulo": "¡Feliz Navidad, Chip y Dale!",
+      "autor": "Disney",
+      "tema": "Diversión y Festividades",
+      "categoria": "diversion-imaginacion",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Mis Primeros Cuentos",
+      "edadMin": 2,
+      "edadMax": 3,
+      "etapas": [
+        "primeros-anos"
+      ]
+    },
+    {
+      "id": "lib_002",
+      "slug": "fuera-etiquetas",
+      "titulo": "¡Fuera etiquetas!",
+      "autor": "Lucía Serrano",
+      "tema": "Valores y Autoestima",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": false,
+      "formatoOriginal": "Tapa dura / Cuento ilustrado",
+      "edadMin": 4,
+      "edadMax": 8,
+      "etapas": [
+        "pequenos-lectores",
+        "lectores-en-evolucion"
+      ]
+    },
+    {
+      "id": "lib_004",
+      "slug": "no-quiero",
+      "titulo": "¡No quiero!",
+      "autor": "Varios",
+      "tema": "Etapa del No y Emociones",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Cartón",
+      "interactivo": true,
+      "formatoOriginal": "Cartón con mecanismos/solapas",
+      "edadMin": 2,
+      "edadMax": 5,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    },
+    {
+      "id": "lib_005",
+      "slug": "un-besito-y-a-dormir",
+      "titulo": "¡Un besito y a dormir!",
+      "autor": "Patricia Geis",
+      "tema": "Rutinas del Sueño",
+      "categoria": "habitos-rutinas-valores",
+      "formato": "Tapa dura",
+      "interactivo": true,
+      "formatoOriginal": "Cuento interactivo / Muñecos",
+      "edadMin": 2,
+      "edadMax": 4,
+      "etapas": [
+        "primeros-anos",
+        "pequenos-lectores"
+      ]
+    }
+  ],
+  "totalEjemplares": 180
+}

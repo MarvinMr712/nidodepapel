@@ -1,0 +1,31 @@
+{
+  "name": "nido-de-papel",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verificar": "npm run verificar:fuentes && npm run check && npm run build && npm run verificar:paginas && npm run verificar:scripts && npm run verificar:texto && npm run verificar:responsivo",
+    "verificar:fuentes": "node scripts/verificar-fuentes.mjs",
+    "verificar:paginas": "node scripts/verificar.mjs",
+    "verificar:scripts": "node scripts/verificar-scripts.mjs",
+    "verificar:texto": "node scripts/comparar-texto.mjs",
+    "verificar:responsivo": "node scripts/verificar-responsivo.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource/dm-serif-display": "^5.2.6",
+    "@fontsource/inter": "^5.2.6",
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/node": "^26.6.4",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.2"
+  }
+}

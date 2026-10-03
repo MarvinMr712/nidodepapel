@@ -1,0 +1,385 @@
+---
+import Base from "@/layouts/Base.astro";
+import AlAparecer from "@/components/AlAparecer.astro";
+import BloqueEscalonado from "@/components/BloqueEscalonado.astro";
+import EntradaEscalonada from "@/components/EntradaEscalonada.astro";
+import CintaTitulos from "@/components/CintaTitulos.astro";
+import Contador from "@/components/Contador.astro";
+import LibroCard from "@/components/LibroCard.astro";
+import SelectorEdad from "@/components/SelectorEdad.astro";
+import {
+  PLANES,
+  SITE,
+  enlaceWhatsApp,
+  getCategorias,
+  getEtapas,
+  getLibros,
+  getLibrosPorCategoria,
+  getLibrosPorEtapa,
+  rangoEtapa,
+  totalCopias,
+} from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+const categorias = getCategorias();
+const etapas = getEtapas();
+const libros = getLibros();
+const copias = totalCopias();
+const destacados = libros.slice(0, 8);
+const cinta = libros.slice(0, 40).map((l) => l.titulo);
+const wa = enlaceWhatsApp(
+  "Hola, quiero información sobre la biblioteca rotativa de Nido de Papel.",
+);
+
+/**
+ * El selector de edad corre en el navegador, asi que se le pasa solo lo que
+ * necesita ver: nombre de la etapa y titulo del libro. Ni copias, ni el
+ * nombre del propietario de cada ejemplar.
+ */
+const etapasResumen = etapas.map((e) => ({
+  slug: e.slug,
+  nombre: e.nombre,
+  rango: rangoEtapa(e),
+}));
+const librosPorEtapa = Object.fromEntries(
+  etapas.map((e) => [
+    e.slug,
+    getLibrosPorEtapa(e.slug).map((l) => ({ slug: l.slug, titulo: l.titulo })),
+  ]),
+);
+
+const cifras = [
+  [String(copias), "copias físicas"],
+  [String(libros.length), "títulos distintos"],
+  [String(categorias.length), "categorías"],
+  [String(etapas.length), "etapas de edad"],
+];
+---
+
+<Base canonical="/">
+  {/* ------------------------------------------------------------ hero */}
+  <section class="hero-fondo grano relative border-b border-linea overflow-hidden">
+    {/* Manchas de color que respiran por detras del contenido. */}
+    <div
+      aria-hidden="true"
+      class="aurora pointer-events-none absolute -top-24 -left-20 h-80 w-80 rounded-full bg-salvia/40 blur-3xl"
+    >
+    </div>
+    <div
+      aria-hidden="true"
+      class="aurora-lenta pointer-events-none absolute top-10 -right-24 h-96 w-96 rounded-full bg-azul/40 blur-3xl"
+    >
+    </div>
+    <div
+      aria-hidden="true"
+      class="aurora pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-coral/40 blur-3xl"
+    >
+    </div>
+
+    <div class="relative mx-auto max-w-6xl px-5 pt-20 pb-24 sm:pt-28 sm:pb-32">
+      <EntradaEscalonada>
+        <BloqueEscalonado>
+          <div class="flex items-center gap-4 mb-7">
+            <img
+              src={ruta("/nido-de-papel.webp")}
+              alt="Nido de Papel"
+              width={56}
+              height={56}
+              fetchpriority="high"
+              decoding="async"
+              class="logo-flotante w-14 h-14 shrink-0"
+            />
+            <div>
+              <p
+                class="text-sm text-salvia-oscuro tracking-wide uppercase leading-tight"
+              >
+                Biblioteca rotativa · Lima
+              </p>
+              <p class="text-sm text-tinta-suave italic leading-tight">
+                {SITE.lema}
+              </p>
+            </div>
+          </div>
+        </BloqueEscalonado>
+
+        <BloqueEscalonado>
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl leading-[1.03] max-w-4xl">
+            No necesitas más libros.
+            <span class="block titulo-marca">Necesitas los correctos.</span>
+          </h1>
+        </BloqueEscalonado>
+
+        <BloqueEscalonado>
+          <p class="mt-7 text-lg text-tinta-suave max-w-2xl leading-relaxed">
+            {libros.length} títulos que rotan cada mes, elegidos para la edad de tu
+            hijo. Los leen, los devuelven, y el siguiente kit ya está esperando.
+          </p>
+        </BloqueEscalonado>
+
+        <BloqueEscalonado>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a
+              href={wa}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="boton brillo pulsable inline-flex items-center justify-center bg-salvia-oscuro text-papel px-7 py-3.5 rounded-full text-sm hover:bg-[#556339] transition-colors"
+            >
+              Quiero mi primera rotación
+            </a>
+            <a
+              href={ruta("/como-funciona")}
+              class="boton inline-flex items-center justify-center bg-papel border border-azul-oscuro/40 text-azul-oscuro px-7 py-3.5 rounded-full text-sm hover:bg-azul/10 transition-colors"
+            >
+              Cómo funciona
+            </a>
+          </div>
+        </BloqueEscalonado>
+      </EntradaEscalonada>
+    </div>
+  </section>
+
+  <CintaTitulos titulos={cinta} />
+
+  {/* ------------------------------------------------------- lema */}
+  <section class="bg-papel border-b border-linea">
+    <div class="mx-auto max-w-3xl px-5 py-14 text-center">
+      <AlAparecer>
+        <p class="font-serif text-3xl sm:text-4xl leading-tight mb-3">
+          {SITE.lema}
+        </p>
+        <p class="text-sm text-tinta-suave leading-relaxed">
+          Cada niño lee mejor con la edad adecuada y un libro que lo atrape. Nosotros
+          buscamos ese libro; tú solo lo lees.
+        </p>
+      </AlAparecer>
+    </div>
+  </section>
+
+  {/* --------------------------------------------------------- cifras */}
+  <section class="mx-auto max-w-6xl px-5 py-16">
+    <EntradaEscalonada class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      {
+        cifras.map(([n, l]) => (
+          <BloqueEscalonado>
+            <p class="font-serif text-5xl titulo-marca">
+              <Contador valor={Number(n)} />
+            </p>
+            <p class="text-sm text-tinta-suave mt-1">{l}</p>
+          </BloqueEscalonado>
+        ))
+      }
+    </EntradaEscalonada>
+  </section>
+
+  {/* ---------------------------------------------- selector de edad */}
+  <section class="bg-papel border-y border-linea">
+    <div class="mx-auto max-w-6xl px-5 py-24">
+      <AlAparecer>
+        <h2 class="text-4xl sm:text-5xl mb-3">¿Cuántos años tiene tu hijo?</h2>
+        <p class="text-tinta-suave max-w-2xl leading-relaxed mb-12">
+          Elige su edad y mira qué hay en el inventario para esa etapa. Es una
+          muestra; en el catálogo están todos.
+        </p>
+      </AlAparecer>
+
+      <AlAparecer delay={0.08}>
+        <SelectorEdad etapas={etapasResumen} librosPorEtapa={librosPorEtapa} />
+      </AlAparecer>
+    </div>
+  </section>
+
+  {/* ---------------------------------------------------- categorías */}
+  <section class="mx-auto max-w-6xl px-5 py-24">
+    <AlAparecer>
+      <h2 class="text-4xl sm:text-5xl mb-3">Cinco maneras de encontrar</h2>
+      <p class="text-tinta-suave max-w-2xl leading-relaxed mb-14">
+        Cada libro del inventario tiene exactamente una categoría. No son etiquetas
+        sueltas: por eso el filtro funciona.
+      </p>
+    </AlAparecer>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        categorias.map((c, i) => {
+          const n = getLibrosPorCategoria(c.slug).length;
+          return (
+            <AlAparecer delay={i * 0.05}>
+              <a
+                href={ruta(`/categorias/${c.slug}`)}
+                class="tarjeta group block h-full rounded-xl border border-linea bg-papel p-7 hover:border-salvia/60 hover:shadow-[0_18px_40px_-24px_rgba(43,42,38,0.3)]"
+              >
+                <p class="text-xs text-tinta-suave mb-2">
+                  {n} {n === 1 ? "libro" : "libros"}
+                </p>
+                <h3 class="text-xl mb-2 group-hover:text-salvia-oscuro transition-colors">
+                  {c.nombre}
+                </h3>
+                <p class="text-sm text-tinta-suave leading-relaxed">
+                  {c.descripcion}
+                </p>
+              </a>
+            </AlAparecer>
+          );
+        })
+      }
+
+      <AlAparecer delay={categorias.length * 0.05}>
+        <a
+          href={ruta("/categorias")}
+          class="tarjeta group flex h-full items-center justify-center rounded-xl border border-dashed border-linea p-7 hover:border-salvia/60"
+        >
+          <span
+            class="text-sm text-tinta-suave group-hover:text-salvia-oscuro transition-colors"
+          >
+            Ver las cinco categorías →
+          </span>
+        </a>
+      </AlAparecer>
+    </div>
+  </section>
+
+  {/* --------------------------------------------------------- planes */}
+  <section class="bg-papel border-y border-linea">
+    <div class="mx-auto max-w-6xl px-5 py-24">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+        <AlAparecer>
+          <h2 class="text-4xl sm:text-5xl mb-4">Dos formas de entrar</h2>
+          <p class="text-tinta-suave leading-relaxed mb-6">
+            Cuatro o seis libros al mes. Sin permanencia, sin acumulación y sin
+            letra chica. El detalle completo está en{" "}
+            <a href={ruta("/como-funciona")} class="subrayado text-salvia-oscuro">
+              cómo funciona
+            </a>
+            .
+          </p>
+          <a
+            href={ruta("/como-funciona")}
+            class="text-sm text-salvia-oscuro hover:text-[#4E5C3B]"
+          >
+            Ver reglas y cobertura →
+          </a>
+        </AlAparecer>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          {
+            PLANES.map((p, i) => (
+              <AlAparecer delay={0.06 + i * 0.08}>
+                <div
+                  class:list={[
+                    "tarjeta h-full rounded-2xl border p-7",
+                    p.destacado
+                      ? "bg-salvia-oscuro text-papel border-salvia-oscuro"
+                      : "bg-crema border-linea",
+                  ]}
+                >
+                  <h3
+                    class:list={["text-xl mb-1", p.destacado && "text-papel"]}
+                  >
+                    {p.nombre}
+                  </h3>
+                  <p
+                    class:list={[
+                      "text-sm mb-6",
+                      p.destacado ? "text-papel/75" : "text-tinta-suave",
+                    ]}
+                  >
+                    {p.libros} libros al mes
+                  </p>
+
+                  <p class="mb-6">
+                    <span class="font-serif text-4xl">S/{p.precio}</span>
+                    <span
+                      class:list={[
+                        "text-sm",
+                        p.destacado ? "text-papel/70" : "text-tinta-suave",
+                      ]}
+                    >
+                      {" "}
+                      / mes
+                    </span>
+                  </p>
+
+                  <a
+                    href={enlaceWhatsApp(
+                      `Hola, quiero el ${p.nombre} (S/${p.precio}/mes).`,
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class:list={[
+                      "boton brillo inline-flex items-center justify-center w-full px-5 py-3 rounded-full text-sm transition-colors",
+                      p.destacado
+                        ? "bg-papel text-salvia-oscuro hover:bg-crema"
+                        : "border border-salvia-oscuro/40 text-salvia-oscuro hover:bg-salvia/10",
+                    ]}
+                  >
+                    Reservar
+                  </a>
+                </div>
+              </AlAparecer>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* -------------------------------------------------- destacados */}
+  <section class="mx-auto max-w-6xl px-5 py-24">
+    <AlAparecer>
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12">
+        <div>
+          <h2 class="text-4xl sm:text-5xl mb-3">Una muestra del inventario</h2>
+          <p class="text-tinta-suave leading-relaxed">
+            {libros.length} títulos rotando este mes. Estos son algunos.
+          </p>
+        </div>
+        <a href={ruta("/catalogo")} class="text-sm text-salvia-oscuro hover:text-[#4E5C3B]">
+          Ver los {libros.length} títulos →
+        </a>
+      </div>
+    </AlAparecer>
+
+    <div class="grid gap-5 grid-cols-2 md:grid-cols-4">
+      {
+        destacados.map((l, i) => (
+          <AlAparecer delay={i * 0.04}>
+            <LibroCard libro={l} />
+          </AlAparecer>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* ----------------------------------------------------------- cta */}
+  <section class="mx-auto max-w-6xl px-5 pb-24">
+    <AlAparecer>
+      <div class="rounded-2xl bg-tinta grano relative overflow-hidden p-10 sm:p-16 text-center">
+        <div class="relative">
+          <h2 class="text-3xl sm:text-4xl text-papel mb-4">
+            Empieza por escribirnos
+          </h2>
+          <p class="text-crema/75 max-w-xl mx-auto leading-relaxed mb-8">
+            Dinos la edad de tu hijo y tu distrito. Te decimos si hay cupo y armamos
+            el primer kit. Sin compromiso.
+          </p>
+          <a
+            href={wa}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="boton brillo pulsable inline-flex items-center justify-center bg-coral-oscuro text-papel px-8 py-4 rounded-full text-sm hover:bg-[#8F4526] transition-colors"
+          >
+            WhatsApp {SITE.whatsappVisible}
+          </a>
+        </div>
+      </div>
+    </AlAparecer>
+  </section>
+
+  <script>
+    import { observarApariciones } from "@/scripts/apariciones";
+    import { observarContadores } from "@/scripts/contadores";
+
+    observarApariciones();
+    observarContadores();
+  </script>
+</Base>

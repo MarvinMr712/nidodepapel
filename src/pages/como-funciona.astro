@@ -1,0 +1,338 @@
+---
+import Base from "@/layouts/Base.astro";
+import AlAparecer from "@/components/AlAparecer.astro";
+import AlAparecerItem from "@/components/AlAparecerItem.astro";
+import Contador from "@/components/Contador.astro";
+import {
+  DISTRITOS,
+  PLANES,
+  SITE,
+  enlaceWhatsApp,
+  getEtapas,
+  rangoEtapa,
+  totalCopias,
+} from "@/lib/catalogo";
+
+const etapas = getEtapas();
+const copias = totalCopias();
+const wa = enlaceWhatsApp(
+  "Hola, quiero resolver dudas sobre cómo funciona la biblioteca rotativa.",
+);
+
+const CICLO = [
+  {
+    n: "01",
+    titulo: "Nos cuentas la edad de tu hijo",
+    texto:
+      "Con eso armamos la curaduría del mes. No mandamos lo que se vendió más: mandamos lo que le sirve a tu hijo en esta etapa.",
+  },
+  {
+    n: "02",
+    titulo: "Armamos tu kit",
+    texto:
+      "Seleccionamos 4 o 6 títulos según tu plan, equilibrados para que no te lleguen seis libros de lo mismo. Puedes pedir cambios antes de que salgamos.",
+  },
+  {
+    n: "03",
+    titulo: "Te lo llevamos a tu casa",
+    texto:
+      "Entrega y recojo dentro de los distritos con cobertura. Si no llegas a ninguno, lo coordinamos por WhatsApp.",
+  },
+  {
+    n: "04",
+    titulo: "Leen durante el ciclo",
+    texto:
+      "Tienes el mes completo. Los libros son de tapa dura, pensados para manos pequeñas y para leerse muchas veces.",
+  },
+  {
+    n: "05",
+    titulo: "Nos devuelves los libros",
+    texto:
+      "Al mes siguiente recogemos el kit anterior. Es la única condición: sin devolución no hay rotación. No hay penalidad, pero sí necesitamos el libro de vuelta.",
+  },
+  {
+    n: "06",
+    titulo: "Recibes el siguiente",
+    texto:
+      "Nunca repetimos títulos de los últimos tres ciclos. Por eso el inventario tiene que ir creciendo: son los 172 títulos los que mantienen la novedad.",
+  },
+];
+
+const REGLAS = [
+  {
+    q: "¿Qué pasa si devuelvo un libro después?",
+    a: "Preferimos que no pase, así que el recordatorio va por WhatsApp antes del vencimiento. Si hay retraso, te damos un mes para ponerte al día. Dos retrasos seguidos y la membresía queda en pausa hasta que se regularice.",
+  },
+  {
+    q: "¿Puedo cambiar un título antes de que me lo envíen?",
+    a: "Sí, ese es el punto de la curaduría. En el plan Premium el cambio es libre. En el Básico también se puede, sujeto a disponibilidad del título que pidas.",
+  },
+  {
+    q: "¿Y si mi hijo no le interesa el kit?",
+    a: "Cuéntanos qué leirmen y qué no durante el ciclo siguiente. Ese es el uso más útil que puedes hacer de WhatsApp con nosotros.",
+  },
+  {
+    q: "¿Los libros son nuevos?",
+    a: "Son copias de tapa dura que rotan entre socios. Se van desgastando. Revisa el estado de cada copia al recibirla y repórtanos cualquier daño: lo reparamos o lo cambiamos.",
+  },
+  {
+    q: "¿Puedo pausar o cancelar?",
+    a: "Sin permanencia. Se pausa con un aviso por WhatsApp y se reanuda cuando quieras. El cobro se detiene mientras la rotación está pausada.",
+  },
+  {
+    q: "¿Envían a provincia?",
+    a: "La biblioteca rotativa es solo en Lima. Los libros personalizados sí se envían a todo el Perú con Olva Express o Shalom.",
+  },
+];
+---
+
+<Base
+  title="Cómo funciona"
+  description="El ciclo mensual, los planes, las reglas de devolución y la cobertura por distrito de la biblioteca rotativa de Nido de Papel."
+  canonical="/como-funciona"
+>
+  {/* ------------------------------------------------------------ hero */}
+  <section class="hero-fondo grano relative border-b border-linea">
+    <div class="relative mx-auto max-w-6xl px-5 pt-24 pb-20">
+      <AlAparecer>
+        <p class="text-sm text-salvia-oscuro tracking-wide uppercase mb-6">
+          Cómo funciona
+        </p>
+      </AlAparecer>
+
+      <AlAparecer delay={0.06}>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl leading-[1.05] max-w-4xl">
+          Un ciclo al mes.
+          <span class="block titulo-marca">Sin devolución no hay rotación.</span>
+        </h1>
+      </AlAparecer>
+
+      <AlAparecer delay={0.12}>
+        <p class="mt-7 text-lg text-tinta-suave max-w-2xl leading-relaxed">
+          Todo el sistema se apoya en una sola cosa: que el libro vuelve. A cambio te
+          prometemos con qué rotar cada mes. Estas son las reglas completas, sin
+          letra chica.
+        </p>
+        <p class="mt-5 font-serif text-2xl sm:text-3xl text-salvia-oscuro">
+          {SITE.lema}
+        </p>
+      </AlAparecer>
+
+      <AlAparecer delay={0.18}>
+        <dl class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-linea">
+          {
+            [
+              [String(copias), "copias en circulación"],
+              ["1", "ciclo al mes"],
+              ["3", "etapas de edad"],
+              [String(DISTRITOS.length), "distritos con cobertura"],
+            ].map(([n, l]) => (
+              <div>
+                <dt class="font-serif text-4xl text-salvia-oscuro">
+                  <Contador valor={Number(n)} />
+                </dt>
+                <dd class="text-sm text-tinta-suave mt-1">{l}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </AlAparecer>
+    </div>
+  </section>
+
+  {/* --------------------------------------------------------- el ciclo */}
+  <section class="mx-auto max-w-6xl px-5 py-24">
+    <AlAparecer>
+      <h2 class="text-4xl sm:text-5xl mb-3">El ciclo, paso a paso</h2>
+      <p class="text-tinta-suave max-w-2xl leading-relaxed mb-16">
+        Lo que pasa desde que te inscribes hasta que recibes el segundo kit.
+      </p>
+    </AlAparecer>
+
+    <ol class="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        CICLO.map((p, i) => (
+          <AlAparecerItem delay={i * 0.05}>
+            <div class="border-t-2 border-salvia/25 pt-5">
+              <p class="font-serif text-4xl text-salvia/30 mb-3">{p.n}</p>
+              <h3 class="text-xl mb-2">{p.titulo}</h3>
+              <p class="text-sm text-tinta-suave leading-relaxed">{p.texto}</p>
+            </div>
+          </AlAparecerItem>
+        ))
+      }
+    </ol>
+  </section>
+
+  {/* ----------------------------------------------------------- planes */}
+  <section class="bg-papel border-y border-linea">
+    <div class="mx-auto max-w-6xl px-5 py-24">
+      <AlAparecer>
+        <h2 class="text-4xl sm:text-5xl mb-3">Dos planes</h2>
+        <p class="text-tinta-suave max-w-2xl leading-relaxed mb-16">
+          La diferencia no es el precio, es cuántos libros entran al mes y si tienes
+          acceso a la curaduría ampliada.
+        </p>
+      </AlAparecer>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          PLANES.map((p, i) => (
+            <AlAparecer delay={i * 0.08}>
+              <div
+                class:list={[
+                  "tarjeta h-full rounded-2xl border bg-crema p-8",
+                  p.destacado ? "border-salvia-oscuro/40 shadow-sm" : "border-linea",
+                ]}
+              >
+                {p.destacado && (
+                  <p class="inline-block text-xs text-papel bg-coral-oscuro rounded-full px-3 py-1 mb-4">
+                    Más elegido
+                  </p>
+                )}
+
+                <h3 class="text-2xl mb-1">{p.nombre}</h3>
+                <p class="text-sm text-tinta-suave mb-6">{p.para}</p>
+
+                <p class="mb-6">
+                  <span class="font-serif text-5xl titulo-marca">S/{p.precio}</span>
+                  <span class="text-sm text-tinta-suave"> / mes</span>
+                  {p.precioAnterior && (
+                    <span class="ml-3 text-sm text-tinta-suave line-through">
+                      S/{p.precioAnterior}
+                    </span>
+                  )}
+                </p>
+
+                <ul class="space-y-3 mb-8">
+                  {p.incluye.map((x) => (
+                    <li class="flex gap-3 text-sm">
+                      <span aria-hidden="true" class="text-salvia-oscuro shrink-0">
+                        ✓
+                      </span>
+                      <span class="text-tinta-suave">{x}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={enlaceWhatsApp(
+                    `Hola, quiero el ${p.nombre} (S/${p.precio}/mes).`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class:list={[
+                    "boton inline-flex items-center justify-center w-full px-6 py-3.5 rounded-full text-sm transition-colors",
+                    p.destacado
+                      ? "bg-salvia-oscuro text-papel hover:bg-[#556339]"
+                      : "border border-salvia-oscuro/40 text-salvia-oscuro hover:bg-salvia/10",
+                  ]}
+                >
+                  Quiero el {p.nombre}
+                </a>
+              </div>
+            </AlAparecer>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ------------------------------------------------------ por edad */}
+  <section class="mx-auto max-w-6xl px-5 py-24">
+    <AlAparecer>
+      <h2 class="text-4xl sm:text-5xl mb-3">Cómo curamos por edad</h2>
+      <p class="text-tinta-suave max-w-2xl leading-relaxed mb-14">
+        No serves todos los libros a todos. Cada etapa se arma con lo que el niño
+        puede sostener en ese momento.
+      </p>
+    </AlAparecer>
+
+    <div class="grid gap-6 sm:grid-cols-3">
+      {
+        etapas.map((e, i) => (
+          <AlAparecer delay={i * 0.07}>
+            <div class="tarjeta h-full rounded-xl border border-linea bg-papel p-7">
+              <p class="text-xs text-salvia-oscuro mb-2">{rangoEtapa(e)} años</p>
+              <h3 class="text-xl mb-2">{e.nombre}</h3>
+              <p class="text-sm text-tinta-suave leading-relaxed">{e.descripcion}</p>
+            </div>
+          </AlAparecer>
+        ))
+      }
+    </div>
+  </section>
+
+  {/* ---------------------------------------------------------- reglas */}
+  <section class="bg-papel border-y border-linea">
+    <div class="mx-auto max-w-4xl px-5 py-24">
+      <AlAparecer>
+        <h2 class="text-4xl sm:text-5xl mb-14">Reglas, sin letra chica</h2>
+      </AlAparecer>
+
+      <dl class="space-y-0">
+        {
+          REGLAS.map((r, i) => (
+            <AlAparecer delay={i * 0.04}>
+              <div class="border-t border-linea py-7">
+                <dt class="font-serif text-xl mb-2">{r.q}</dt>
+                <dd class="text-sm text-tinta-suave leading-relaxed">{r.a}</dd>
+              </div>
+            </AlAparecer>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  {/* ------------------------------------------------------- cobertura */}
+  <section class="mx-auto max-w-6xl px-5 py-24">
+    <AlAparecer>
+      <h2 class="text-4xl sm:text-5xl mb-3">Dónde entregamos</h2>
+      <p class="text-tinta-suave max-w-2xl leading-relaxed mb-10">
+        Entrega y recojo dentro de estos {DISTRITOS.length} distritos. Si el tuyo no
+        está, escríbenos y vemos la forma.
+      </p>
+    </AlAparecer>
+
+    <AlAparecer delay={0.08}>
+      <ul class="flex flex-wrap gap-2.5">
+        {
+          DISTRITOS.map((d) => (
+            <li class="rounded-full border border-linea bg-papel px-4 py-2 text-sm hover:border-salvia/60 hover:text-salvia-oscuro transition-colors">
+              {d}
+            </li>
+          ))
+        }
+      </ul>
+    </AlAparecer>
+
+    <AlAparecer delay={0.14}>
+      <div class="mt-16 rounded-2xl bg-tinta text-crema p-10 sm:p-14">
+        <h2 class="text-3xl sm:text-4xl text-papel mb-3">
+          ¿Listo para la primera rotación?
+        </h2>
+        <p class="text-crema/75 max-w-xl leading-relaxed mb-8">
+          Escríbenos por WhatsApp con la edad de tu hijo y el distrito. Te decimos si
+          hay cupo y armamos el primer kit.
+        </p>
+        <a
+          href={wa}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="boton inline-flex items-center justify-center bg-salvia-oscuro text-papel px-7 py-3.5 rounded-full text-sm hover:bg-[#556339] transition-colors"
+        >
+          Escribir al {SITE.whatsappVisible}
+        </a>
+      </div>
+    </AlAparecer>
+  </section>
+
+  <script>
+    import { observarApariciones } from "@/scripts/apariciones";
+    import { observarContadores } from "@/scripts/contadores";
+
+    observarApariciones();
+    observarContadores();
+  </script>
+</Base>

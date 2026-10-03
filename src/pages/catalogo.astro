@@ -1,0 +1,52 @@
+---
+import Base from "@/layouts/Base.astro";
+import Catalogo, { type Opciones } from "@/components/Catalogo.astro";
+import {
+  autoresDisponibles,
+  formatosDisponibles,
+  getCategorias,
+  getEtapas,
+  getLibros,
+  inicialesDisponibles,
+  rangoEtapa,
+} from "@/lib/catalogo";
+
+/**
+ * Las listas de los desplegables y el catalogo se arman en el build y se
+ * escriben en el HTML. El filtrado ocurre en el navegador, asi que la pagina se
+ * prerenderiza entera y funciona en cualquier hosting estatico, donde no hay
+ * servidor.
+ *
+ * libros.json no trae el detalle de los ejemplares: ese esta en
+ * libros-privados.json, que no se sube. Asi que lo que llega al navegador ya
+ * viene limpio.
+ */
+const OPCIONES: Opciones = {
+  categoria: getCategorias().map((c) => ({ valor: c.slug, texto: c.nombre })),
+  etapa: getEtapas().map((e) => ({
+    valor: e.slug,
+    texto: `${e.nombre} · ${rangoEtapa(e)} años`,
+  })),
+  formato: formatosDisponibles().map((f) => ({ valor: f, texto: f })),
+  autor: autoresDisponibles().map((a) => ({ valor: a, texto: a })),
+  letra: inicialesDisponibles().map((l) => ({ valor: l, texto: l })),
+};
+
+const LIBROS = getLibros();
+---
+
+<Base
+  title="Catálogo completo"
+  description="Los títulos de la biblioteca rotativa de Nido de Papel. Elige por categoría, edad, formato, autor o letra."
+  canonical="/catalogo"
+>
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <h1 class="text-4xl sm:text-5xl mb-3">Catálogo</h1>
+
+    <Catalogo
+      libros={LIBROS}
+      opciones={OPCIONES}
+      totalTitulos={LIBROS.length}
+    />
+  </div>
+</Base>

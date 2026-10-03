@@ -1,0 +1,44 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCategorias, getLibrosPorCategoria } from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+const categorias = getCategorias();
+---
+
+<Base
+  title="Categorías"
+  description="Las cinco categorías de la biblioteca rotativa: emociones y vínculo, hábitos y rutinas, conocimiento, diversión y creatividad, y fe."
+  canonical="/categorias"
+>
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <h1 class="text-4xl sm:text-5xl mb-3">Categorías</h1>
+    <p class="text-tinta-suave mb-14 max-w-2xl leading-relaxed">
+      Todo el inventario está ordenado en cinco categorías. Están pensadas para
+      funcionan como categorías, no como etiquetas sueltas: cada libro tiene
+      exactamente una.
+    </p>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        categorias.map((c) => {
+          const n = getLibrosPorCategoria(c.slug).length;
+          return (
+            <a
+              href={ruta(`/categorias/${c.slug}`)}
+              class="group rounded-xl border border-linea bg-papel p-7 hover:border-salvia/60 transition-colors"
+            >
+              <p class="text-xs text-tinta-suave mb-2">
+                {n} {n === 1 ? "libro" : "libros"}
+              </p>
+              <h2 class="text-2xl mb-2 group-hover:text-salvia-oscuro transition-colors">
+                {c.nombre}
+              </h2>
+              <p class="text-sm text-tinta-suave leading-relaxed">{c.descripcion}</p>
+            </a>
+          );
+        })
+      }
+    </div>
+  </div>
+</Base>

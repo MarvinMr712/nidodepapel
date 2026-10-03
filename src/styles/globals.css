@@ -1,0 +1,506 @@
+/* ============================================================================
+   Nido de Papel — hoja de estilos unica.
+
+   Es el mismo archivo que usaba el proyecto anterior, sin cambios de valores:
+   mismos colores, mismas transiciones, mismas duraciones, mismos breakpoints.
+   Lo unico que se agrega son las fuentes, que antes las insertaba el
+   framework por codigo y ahora se declaran aqui.
+   ========================================================================= */
+
+/* Inter 400 y 500, DM Serif Display 400. Son los unicos pesos que el sitio
+   usa: el resto hereda 400 y los titulos usan la serif. Antes next/font
+   descargaba nueve archivos de Inter; con JavaScript desactivado, las tres
+   declaraciones de abajo son las que se quedan. */
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/dm-serif-display/latin-400.css";
+
+@import "tailwindcss";
+
+/* Nombres de familia que consumen las utilidades font-serif y font-sans.
+   Antes los definia el framework con una variable por fuente. */
+:root {
+  --font-dm-serif: "DM Serif Display";
+  --font-inter: "Inter";
+
+  /* Curva de entrada usada en las animaciones. */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  /* ------------------------------------------------------------ superficies */
+  --color-crema: #f8f3ea;
+  --color-papel: #ffffff;
+
+  /* ------------------------------------------------------------------ tinta */
+  --color-tinta: #2b2a26;
+  --color-tinta-suave: #6f655b;
+
+  /* --------------------------------------------------- marca Nido de Papel */
+  /* Base pastel: rellenos decorativos y fondos suaves. Lleva tinta oscura. */
+  --color-salvia: #7f9360;
+  --color-azul: #78afc5;
+  --color-coral: #efa39a;
+
+  /* Variantes profundas: texto, enlaces y botones con texto blanco.
+     Todas >= 4.5:1 sobre crema y con blanco encima. */
+  --color-salvia-oscuro: #64744c;
+  --color-azul-oscuro: #3c758c;
+  --color-coral-oscuro: #a9552f;
+
+  --color-linea: #e3dccb;
+
+  /* ------------------------------------------------------------------ alias */
+  /* Se conservan los nombres antiguos para no romper los componentes ya
+     escritos. Apuntan a la variante profunda: asi "text-terracota" como
+     hover de enlace y "bg-terracota text-papel" como boton siguen siendo
+     accesibles. */
+  --color-terracota: var(--color-coral-oscuro);
+  --color-terracota-oscuro: #8f4526;
+  --color-verde: var(--color-salvia-oscuro);
+  --color-oro: var(--color-coral);
+
+  --font-serif: var(--font-dm-serif);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--color-crema);
+  color: var(--color-tinta);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+::selection {
+  background: var(--color-coral);
+  color: var(--color-tinta);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-azul-oscuro);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ============================================================ movimiento base */
+
+@keyframes cinta {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    /* -50% porque la lista esta duplicada: el salto coincide con el original */
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.cinta-track {
+  animation: cinta 60s linear infinite;
+}
+
+.cinta-track:hover {
+  animation-play-state: paused;
+}
+
+/* El logo respira despacio, como si flotara sobre la pagina. */
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1.2deg);
+  }
+}
+
+.logo-flotante {
+  animation: flotar 6s ease-in-out infinite;
+}
+
+/* Al pasar el mouse se detiene y se inclina un poco mas. */
+@media (hover: hover) {
+  .logo-flotante:hover {
+    animation-play-state: paused;
+    transform: translateY(-2px) rotate(3deg) scale(1.04);
+  }
+}
+
+/* Manchas de aurora que respiran en el fondo del hero. */
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  33% {
+    transform: translate3d(3%, -4%, 0) scale(1.08);
+    opacity: 0.75;
+  }
+  66% {
+    transform: translate3d(-3%, 3%, 0) scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+.aurora {
+  animation: aurora 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.aurora-lenta {
+  animation: aurora 26s ease-in-out infinite reverse;
+}
+
+/* Barrido de luz sobre las superficies de marca. */
+@keyframes brillo {
+  from {
+    transform: translate3d(-120%, 0, 0);
+  }
+  to {
+    transform: translate3d(120%, 0, 0);
+  }
+}
+
+.brillo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 80%
+  );
+  transform: translate3d(-120%, 0, 0);
+}
+
+@media (hover: hover) {
+  .brillo:hover::after {
+    animation: brillo 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* Empuje suave al pulsar, para botones y enlaces grandes. */
+@keyframes pulsar {
+  50% {
+    transform: scale(0.96);
+  }
+}
+
+.pulsable:active {
+  animation: pulsar 0.28s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinta-track,
+  .logo-flotante,
+  .aurora,
+  .aurora-lenta {
+    animation: none;
+  }
+  .brillo:hover::after {
+    animation: none;
+    transform: none;
+  }
+  .pulsable:active {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ================================================================== textura */
+
+/* Grano sutil: quita el aspecto de pagina plana sin usar imagenes. */
+.grano::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Fondo del hero: aurora salvia + azul + coral sobre la crema. */
+.hero-fondo {
+  background:
+    radial-gradient(60rem 34rem at 10% -12%, rgba(127, 147, 96, 0.28), transparent 62%),
+    radial-gradient(48rem 32rem at 88% 4%, rgba(120, 175, 197, 0.3), transparent 64%),
+    radial-gradient(40rem 28rem at 60% 100%, rgba(239, 163, 154, 0.24), transparent 60%),
+    var(--color-crema);
+}
+
+/* Titulares con degradado de marca. */
+.titulo-marca {
+  background: linear-gradient(
+    100deg,
+    var(--color-salvia-oscuro) 0%,
+    var(--color-azul-oscuro) 52%,
+    var(--color-coral-oscuro) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* evita el recorte de los descendentes en algunos navegadores */
+  padding-bottom: 0.08em;
+}
+
+/* =================================================================== enlaces */
+
+/* Subrayado que crece desde la izquierda al pasar el mouse. */
+.subrayado {
+  background-image: linear-gradient(
+    var(--color-salvia-oscuro),
+    var(--color-salvia-oscuro)
+  );
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.subrayado:hover,
+.subrayado[data-activo="true"] {
+  background-size: 100% 1px;
+}
+
+/* =================================================================== tarjeta */
+
+.tarjeta {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px -20px rgba(43, 42, 38, 0.26);
+}
+
+/* Zoom lento de la portada al hacer hover. */
+.portada-zoom {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .portada-zoom,
+.group:focus-visible .portada-zoom {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta:hover,
+  .portada-zoom {
+    transform: none;
+  }
+}
+
+/* ==================================================================== boton */
+
+.boton {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.boton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.boton:hover::after {
+  transform: translateX(120%);
+}
+
+/* ================================================================= scrollbar */
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-crema);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cfc5b2;
+  border-radius: 99px;
+  border: 3px solid var(--color-crema);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-salvia-oscuro);
+}
+
+/* ============================================ aparicion al entrar en pantalla
+
+   Antes lo hacia la libreria de animaciones: ponia el elemento en opacidad 0
+   y lo movia 24px cuando entraba en pantalla, una sola vez, con 0,55s de
+   duracion y un margen de 12% para que empezara un poco antes de verse.
+
+   Aqui se reproduce con IntersectionObserver y una transicion de CSS. Las
+   reglas viven dentro de `.js`, que se activa con un script en el <head>: si
+   el visitante no tiene JavaScript, nada se oculta y el contenido se lee
+   igual, que es como se comportaba antes. */
+
+.js [data-aparecer] {
+  opacity: 0;
+  transform: translateY(var(--aparcer-y, 24px));
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease);
+  transition-delay: var(--aparcer-delay, 0s);
+}
+
+.js [data-aparecer].es-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ================================================= entrada escalonada del hero
+
+   El grupo del encabezado y el de las cifras entraban por pasos: cada bloque
+   esperaba 0,05s y despues 0,07s mas que el anterior, durante 0,6s. Con
+   animaciones de CSS no hace falta JavaScript para dispararlas: arrancan al
+   cargar la hoja de estilos y el retardo se aplica con `both`. */
+
+@keyframes escalonado-entra {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.js [data-escalonado] > * {
+  animation: escalonado-entra 0.6s var(--ease) both;
+}
+
+.js [data-escalonado] > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.js [data-escalonado] > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.js [data-escalonado] > *:nth-child(3) {
+  animation-delay: 0.19s;
+}
+.js [data-escalonado] > *:nth-child(4) {
+  animation-delay: 0.26s;
+}
+.js [data-escalonado] > *:nth-child(5) {
+  animation-delay: 0.33s;
+}
+.js [data-escalonado] > *:nth-child(6) {
+  animation-delay: 0.4s;
+}
+.js [data-escalonado] > *:nth-child(7) {
+  animation-delay: 0.47s;
+}
+.js [data-escalonado] > *:nth-child(8) {
+  animation-delay: 0.54s;
+}
+
+/* ============================================ selector de edad: pastilla movil
+   El bloque que cambia de edad se desvanece hacia arriba, se cambia el
+   contenido y entra desde abajo. Dos pasos de 0,3s, como antes.
+
+   La transición va en [data-panel] a secas, no en un estado concreto: si solo la
+   declarara el estado de salida, al poner "saliendo" no habría nada que
+   animar y el panel se movería de golpe. */
+
+[data-panel] {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+[data-panel="saliendo"] {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+[data-panel="entrando"] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: none;
+}
+
+/* La pastilla se desplaza entre botones. */
+
+[data-pastilla] {
+  transition:
+    width 0.34s cubic-bezier(0.34, 1.4, 0.64, 1),
+    transform 0.34s cubic-bezier(0.34, 1.4, 0.64, 1),
+    height 0.34s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* Antes de que el script la mueva al tablist, la pastilla va dentro del botón
+   activo y `inset-0` la coloca bien sola. Una vez movida al contenedor, el
+   orden de pintado tiene que ser el de antes: fondo del botón, pastilla encima,
+   texto encima de la pastilla.
+
+   Los botones no llevan z-index a propósito. Como el tablist es flex, un
+   z-index en ellos los convertiría en la capa de arriba y taparían la
+   pastilla con su propio fondo `bg-papel`. La pastilla sube con z-index 1 y el
+   texto, que ya es `relative`, con z-index 2. */
+
+[data-selector-edad] [role="tablist"] {
+  position: relative;
+}
+
+[data-pastilla] {
+  z-index: 1;
+}
+
+[data-selector-edad] [data-capa] {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-pastilla] {
+    transition: none;
+  }
+  [data-panel] {
+    transition: none;
+  }
+  [data-panel="entrando"],
+  [data-panel="saliendo"] {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,68 @@
+# Despliegue automatico en GitHub Pages.
+#
+# Cada vez que se sube algo a la rama principal, GitHub compila el sitio y lo
+# publica en https://marvinmr712.github.io/nidodepapel/
+#
+# No hace falta compilar nada en local ni subir la carpeta dist: dist esta en el
+# .gitignore a proposito.
+
+name: Desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Permite desplegar desde la pestana Actions sin esperar a un push.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nunca dos despliegues a la vez. Astro no necesita un cache de dependencias:
+# el build entero tarda unos segundos y cachearlo solo anade pasos que se
+# pueden quedar obsoletos.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  desplegar:
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sacar el codigo
+        uses: actions/checkout@v4
+
+      - name: Instalar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar que las fuentes estan sanas
+        run: npm run verificar:fuentes
+
+      - name: Revisar los tipos
+        run: npm run check
+
+      - name: Compilar
+        run: npm run build
+        env:
+          # Solo el origen. La subcarpeta va en BASE_PATH: darle la ruta
+          # completa a SITE_URL deja el build colgado.
+          SITE_URL: https://marvinmr712.github.io
+          BASE_PATH: /nidodepapel
+
+      - name: Subir el sitio compilado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Publicar
+        id: deploy
+        uses: actions/deploy-pages@v4

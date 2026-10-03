@@ -1,0 +1,155 @@
+---
+import { ruta } from "@/lib/rutas";
+
+export interface EtapaResumen {
+  slug: string;
+  nombre: string;
+  /** Texto ya armado, porque una etapa puede no tener limite superior. */
+  rango: string;
+}
+
+export interface LibroMini {
+  slug: string;
+  titulo: string;
+}
+
+export interface Props {
+  etapas: EtapaResumen[];
+  librosPorEtapa: Record<string, LibroMini[]>;
+}
+
+const { etapas, librosPorEtapa } = Astro.props;
+
+const activa = etapas[0];
+const totalActiva = activa ? (librosPorEtapa[activa.slug] ?? []).length : 0;
+const librosActivos = activa
+  ? (librosPorEtapa[activa.slug] ?? []).slice(0, 6)
+  : [];
+
+/**
+ * Los datos de las otras etapas viajan como JSON para que el script pueda
+ * rearmar el panel. Solo título y slug, nunca el detalle de ejemplares.
+ */
+const datos = {
+  etapas,
+  rutas: Object.fromEntries(etapas.map((e) => [e.slug, ruta(`/etapas/${e.slug}`)])),
+  librosPorEtapa: Object.fromEntries(
+    etapas.map((e) => [e.slug, (librosPorEtapa[e.slug] ?? []).length]),
+  ),
+  titulos: Object.fromEntries(
+    etapas.map((e) => [
+      e.slug,
+      (librosPorEtapa[e.slug] ?? [])
+        .slice(0, 6)
+        .map((l) => ({ titulo: l.titulo, url: ruta(`/libros/${l.slug}`) })),
+    ]),
+  ),
+  vacio: "Todavía no hay títulos para esta edad.",
+};
+---
+
+<div data-selector-edad>
+  <div
+    role="tablist"
+    aria-label="Elige la edad de tu hijo"
+    class="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
+  >
+    {
+      etapas.map((e, i) => {
+        const activo = i === 0;
+        return (
+          <button
+            type="button"
+            role="tab"
+            data-etapa={e.slug}
+            aria-selected={activo ? "true" : "false"}
+            aria-controls="panel-edad"
+            class="relative shrink-0 rounded-full border border-linea bg-papel px-4 sm:px-5 py-2.5 text-sm transition-colors hover:border-salvia/60"
+          >
+            {/* La pastilla vive en el HTML para que sin JavaScript la pestaña
+                activa sea legible. El script la mueve al tablist al arrancar. */}
+            {activo && (
+              <span
+                data-pastilla
+                aria-hidden="true"
+                class="absolute inset-0 rounded-full bg-salvia-oscuro"
+              />
+            )}
+            <span
+              data-capa
+              class:list={[
+                "relative z-10 flex flex-col items-center leading-tight",
+                activo ? "text-papel" : "text-tinta-suave",
+              ]}
+            >
+              <span class="whitespace-nowrap">{e.rango} años</span>
+              <span
+                data-capa-sub
+                class:list={["text-[11px]", activo ? "text-papel/80" : "text-tinta-suave/80"]}
+              >
+                {e.nombre}
+              </span>
+            </span>
+          </button>
+        );
+      })
+    }
+  </div>
+
+  {
+    activa && (
+      <div id="panel-edad" role="tabpanel" data-panel class="mt-8">
+        <p data-panel-conteo class="text-sm text-tinta-suave mb-4">
+          {totalActiva} {totalActiva === 1 ? "libro" : "libros"} de {activa.rango} años
+        </p>
+
+        <div data-panel-zona>
+          {
+            librosActivos.length === 0 ? (
+              <p class="border border-dashed border-linea rounded-xl py-14 px-5 text-center text-sm text-tinta-suave">
+                Todavía no hay títulos para esta edad.
+              </p>
+            ) : (
+              <ul class="grid gap-2 sm:grid-cols-2">
+                {librosActivos.map((l) => (
+                  <li class="min-w-0">
+                    <a
+                      href={ruta(`/libros/${l.slug}`)}
+                      class="group flex items-center gap-3 rounded-lg border border-linea bg-papel px-4 py-3 hover:border-salvia/60 transition-colors h-full"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="grid place-items-center w-9 h-9 shrink-0 rounded-md bg-salvia/15 text-salvia-oscuro font-serif"
+                      >
+                        {l.titulo.charAt(0).toUpperCase()}
+                      </span>
+                      <span class="text-sm leading-snug group-hover:text-salvia-oscuro transition-colors break-words min-w-0">
+                        {l.titulo}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+
+        <a
+          data-panel-enlace
+          href={ruta(`/etapas/${activa.slug}`)}
+          class="inline-block mt-6 text-sm text-salvia-oscuro hover:text-[#4E5C3B]"
+        >
+          Ver los {totalActiva} títulos de {activa.nombre.toLowerCase()} →
+        </a>
+      </div>
+    )
+  }
+
+  <script type="application/json" data-datos set:html={JSON.stringify(datos)} />
+</div>
+
+<script>
+  import { montarSelectorEdad } from "@/scripts/selector-edad";
+
+  montarSelectorEdad();
+</script>

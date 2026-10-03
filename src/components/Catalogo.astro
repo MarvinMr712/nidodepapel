@@ -1,0 +1,166 @@
+---
+import type { Libro } from "@/lib/types";
+import LibroCard from "@/components/LibroCard.astro";
+import { ruta } from "@/lib/rutas";
+
+export interface Opcion {
+  valor: string;
+  texto: string;
+}
+
+export interface Opciones {
+  categoria: Opcion[];
+  etapa: Opcion[];
+  formato: Opcion[];
+  autor: Opcion[];
+  letra: Opcion[];
+}
+
+interface Props {
+  libros: Libro[];
+  opciones: Opciones;
+  totalTitulos: number;
+}
+
+const { libros, opciones, totalTitulos } = Astro.props;
+
+const ORDEN: Opcion[] = [
+  { valor: "titulo", texto: "Título (A–Z)" },
+  { valor: "autor", texto: "Autor (A–Z)" },
+];
+
+const CAMPOS = [
+  { clave: "categoria", etiqueta: "Categoría", vacio: "Todas" },
+  { clave: "etapa", etiqueta: "Edad", vacio: "Todas las edades" },
+  { clave: "formato", etiqueta: "Formato", vacio: "Todos los formatos" },
+  { clave: "autor", etiqueta: "Autor o editorial", vacio: "Todos los autores" },
+  { clave: "letra", etiqueta: "Letra inicial", vacio: "Cualquier letra" },
+] as const;
+
+/** Igual que `inicialDe` en catalogo.ts: primera letra visible del título. */
+const inicialDe = (titulo: string): string => {
+  const limpia = titulo.replace(/[¿¡"'¿]/g, "").trim();
+  for (const ch of limpia) {
+    if (/[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]/.test(ch)) return ch.toUpperCase();
+  }
+  return "#";
+};
+---
+
+<>
+  <p class="text-tinta-suave mb-12 max-w-2xl leading-relaxed">
+    Los {totalTitulos} títulos que rotan este mes. Elige lo que necesitas y te
+    armamos el kit.
+  </p>
+
+  {/*
+    El HTML trae los 172 títulos y los seis desplegables. El filtrado corre en
+    el navegador sobre los atributos `data-*` de cada tarjeta, así que la página
+    se prerenderiza entera y funciona sin JavaScript: lo que se ve entonces es el
+    catálogo completo, que es justo lo que debe pasar.
+
+    Los libros llegan sin el detalle de los ejemplares: ese está en
+    libros-privados.json, que no se sube. Lo que llega al navegador viene limpio.
+  */}
+  <div data-catalogo>
+    <div class="mb-10">
+      <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+        {
+          CAMPOS.map((campo) => (
+            <label class="block min-w-0">
+              <span class="block text-xs text-tinta-suave mb-1.5">
+                {campo.etiqueta}
+              </span>
+              <select
+                name={campo.clave}
+                data-filtro
+                class="w-full min-w-0 bg-papel border border-linea rounded-lg px-2 sm:px-3 py-2.5 text-sm text-tinta focus:border-azul-oscuro focus:outline-none"
+              >
+                <option value="">{campo.vacio}</option>
+                {opciones[campo.clave].map((o) => (
+                  <option value={o.valor}>{o.texto}</option>
+                ))}
+              </select>
+            </label>
+          ))
+        }
+
+        <label class="block min-w-0">
+          <span class="block text-xs text-tinta-suave mb-1.5">Ordenar por</span>
+          <select
+            name="orden"
+            data-filtro
+            class="w-full min-w-0 bg-papel border border-linea rounded-lg px-2 sm:px-3 py-2.5 text-sm text-tinta focus:border-azul-oscuro focus:outline-none"
+          >
+            <option value="">Título (A–Z)</option>
+            {ORDEN.map((o) => (
+              <option value={o.valor}>{o.texto}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm">
+        <p class="text-tinta-suave">
+          <span class="text-tinta font-medium" data-total>{libros.length}</span>
+          {" "}
+          <span data-sustantivo>{libros.length === 1 ? "libro" : "libros"}</span>
+          <span data-activos-texto />
+        </p>
+
+        <div class="flex flex-wrap items-center gap-2" data-pastillas hidden />
+      </div>
+    </div>
+
+    <div
+      data-vacio
+      class="hidden border border-dashed border-linea rounded-xl py-20 px-5 text-center"
+    >
+      <p class="font-serif text-2xl mb-2">No hay libros con esa combinación</p>
+      <p class="text-sm text-tinta-suave">
+        Prueba quitando algún filtro. También puedes{" "}
+        <a href="https://wa.me/51955419565" class="subrayado text-salvia-oscuro">
+          escribirnos
+        </a>{" "}
+        y lo buscamos dentro del inventario.
+      </p>
+    </div>
+
+    <ul
+      data-rejilla
+      class="grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      {
+        libros.map((l) => (
+          <li
+            data-libro
+            data-categoria={l.categoria}
+            data-etapas={l.etapas.join(" ")}
+            data-formato={l.formato}
+            data-autor={l.autor}
+            data-letra={inicialDe(l.titulo)}
+            data-titulo-orden={l.titulo.replace(/^[¿¡"']+\s*/, "")}
+            data-autor-orden={l.autor}
+          >
+            <LibroCard libro={l} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  {/* Enlace de escape para quien llega a una combinacion imposible. */}
+  <p class="mt-14 text-sm text-tinta-suave">
+    ¿Buscas algo puntual?{" "}
+    <a href={ruta("/como-funciona")} class="subrayado text-salvia-oscuro">
+      Mira cómo funciona la rotación
+    </a>{" "}
+    o escríbenos y lo buscamos.
+  </p>
+</>
+
+<script>
+  import { montarCatalogo } from "@/scripts/catalogo";
+
+  montarCatalogo();
+</script>

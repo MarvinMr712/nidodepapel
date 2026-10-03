@@ -1,0 +1,158 @@
+---
+import type { GetStaticPaths } from "astro";
+import Base from "@/layouts/Base.astro";
+import {
+  SITE,
+  enlaceWhatsApp,
+  getCategoria,
+  getEtapa,
+  getLibro,
+  getLibros,
+  rangoEdad,
+  rangoEtapa,
+} from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+export const getStaticPaths = (() =>
+  getLibros().map((l) => ({
+    params: { slug: l.slug },
+    props: { slug: l.slug },
+  }))) satisfies GetStaticPaths;
+
+const { slug } = Astro.props;
+const libro = getLibro(slug);
+if (!libro) return Astro.redirect("/catalogo");
+
+const categoria = getCategoria(libro.categoria);
+const etapas = libro.etapas
+  .map((e) => getEtapa(e))
+  .filter((e): e is NonNullable<typeof e> => Boolean(e));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  name: libro.titulo,
+  author: { "@type": "Person", name: libro.autor },
+  inLanguage: "es",
+  ...(libro.tema ? { about: libro.tema } : {}),
+  ...(categoria ? { genre: categoria.nombre } : {}),
+  ...(libro.edadMin !== null
+    ? {
+        suitableForAge: {
+          "@type": "PeopleAudience",
+          minAge: libro.edadMin,
+          maxAge: libro.edadMax ?? undefined,
+        },
+      }
+    : {}),
+};
+
+const wa = enlaceWhatsApp(`Hola, me interesa el libro "${libro.titulo}" para mi hijo.`);
+
+const ficha: [string, string][] = [
+  ["Autor o editorial", libro.autor],
+  ["Edad recomendada", rangoEdad(libro)],
+  ["Categoría", categoria?.nombre ?? "—"],
+  [
+    "Formato",
+    libro.interactivo ? `${libro.formato} · interactivo` : libro.formato,
+  ],
+];
+
+const inicial = libro.titulo
+  .replace(/[¿¡"']/g, "")
+  .trim()
+  .charAt(0)
+  .toUpperCase();
+---
+
+<Base
+  title={libro.titulo}
+  description={`${libro.titulo}, de ${libro.autor}. Para ${rangoEdad(libro).toLowerCase()}. ${categoria?.nombre ?? ""}`.trim()}
+  canonical={`/libros/${libro.slug}`}
+  ogTitle={`${libro.titulo} · ${SITE.nombre}`}
+  ogType="article"
+>
+  <article class="mx-auto max-w-4xl px-5 py-16">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <nav class="text-sm text-tinta-suave mb-8">
+      <a href={ruta("/catalogo")} class="hover:text-salvia-oscuro">Catálogo</a>
+      {
+        categoria && (
+          <>
+            {" / "}
+            <a
+              href={ruta(`/categorias/${categoria.slug}`)}
+              class="hover:text-salvia-oscuro"
+            >
+              {categoria.nombre}
+            </a>
+          </>
+        )
+      }
+    </nav>
+
+    <div class="grid gap-10 sm:grid-cols-[minmax(0,1fr)_auto]">
+      <div>
+        <h1 class="text-4xl sm:text-5xl leading-tight mb-3 break-words">
+          {libro.titulo}
+        </h1>
+        <p class="text-lg text-tinta-suave">{libro.autor}</p>
+      </div>
+
+      <div
+        aria-hidden="true"
+        class="hidden sm:grid w-40 h-48 place-items-center rounded-xl bg-salvia/15 text-salvia-oscuro font-serif text-6xl"
+      >
+        {inicial}
+      </div>
+    </div>
+
+    {
+      libro.tema && (
+        <p class="mt-6 text-tinta-suave leading-relaxed max-w-2xl">
+          <span class="text-tinta">Tema:</span> {libro.tema}
+        </p>
+      )
+    }
+
+    <dl class="mt-10 border-t border-linea">
+      {
+        ficha.map(([k, v]) => (
+          <div class="grid grid-cols-1 gap-1 py-4 border-b border-linea sm:grid-cols-[minmax(0,11rem)_1fr] sm:gap-4 sm:items-baseline">
+            <dt class="text-sm text-tinta-suave">{k}</dt>
+            <dd class="text-sm break-words">{v}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    {
+      etapas.length > 0 && (
+        <div class="mt-8">
+          <p class="text-sm text-tinta-suave mb-3">Etapas que sirve</p>
+          <div class="flex flex-wrap gap-2">
+            {etapas.map((e) => (
+              <a
+                href={ruta(`/etapas/${e.slug}`)}
+                class="text-sm border border-salvia-oscuro/30 text-salvia-oscuro rounded-full px-3 py-1.5 hover:bg-salvia/10"
+              >
+                {e.nombre} · {rangoEtapa(e)} años
+              </a>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <a
+      href={wa}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="boton inline-flex items-center justify-center mt-12 bg-salvia-oscuro text-papel px-6 py-3 rounded-full text-sm hover:bg-[#556339] transition-colors"
+    >
+      Consultar por este libro
+    </a>
+  </article>
+</Base>

@@ -1,0 +1,16 @@
+---
+/**
+ * Cuenta desde cero hasta el valor cuando el bloque entra en pantalla.
+ *
+ * El HTML escribe siempre el número real. El script lo reemplaza por el conteo
+ * animado, y solo si hay movimiento permitido.
+ */
+export interface Props {
+  valor: number;
+  sufijo?: string;
+}
+
+const { valor, sufijo = "" } = Astro.props;
+---
+
+<span data-contador={valor}>{`${valor}${sufijo}`}</span>

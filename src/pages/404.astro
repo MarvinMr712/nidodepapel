@@ -1,0 +1,43 @@
+---
+import Base from "@/layouts/Base.astro";
+import { SITE, getCategorias } from "@/lib/catalogo";
+import { ruta } from "@/lib/rutas";
+
+const categorias = getCategorias();
+---
+
+<Base title="Página no encontrada" description="Esa página se la llevó el viento.">
+  <div class="mx-auto max-w-2xl px-5 py-32 text-center">
+    <p class="text-sm text-salvia-oscuro mb-4">Error 404</p>
+    <h1 class="text-4xl sm:text-5xl mb-4">Esa página se la llevó el viento</h1>
+    <p class="text-tinta-suave leading-relaxed mb-6">
+      El enlace no existe o cambió de sitio. Te dejamos dos caminos para seguir.
+    </p>
+    <p class="text-sm text-salvia-oscuro italic mb-10">{SITE.lema}</p>
+
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a
+        href={ruta("/catalogo")}
+        class="px-6 py-3 rounded-full bg-salvia-oscuro text-papel text-sm hover:bg-[#556339] transition-colors"
+      >
+        Ver el catálogo
+      </a>
+    </div>
+
+    <div class="mt-14 pt-10 border-t border-linea">
+      <p class="text-xs text-tinta-suave mb-4">O explora por categoría</p>
+      <div class="flex flex-wrap gap-2 justify-center">
+        {
+          categorias.map((c) => (
+            <a
+              href={ruta(`/categorias/${c.slug}`)}
+              class="text-sm border border-linea rounded-full px-3 py-1.5 text-tinta-suave hover:border-salvia/60 hover:text-salvia-oscuro"
+            >
+              {c.nombre}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Base>
