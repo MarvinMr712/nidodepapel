@@ -68,7 +68,8 @@ Para desplegar en GitHub Pages hay que aadir un paso antes del build:
 - uses: actions/checkout@v4
 - uses: actions/setup-node@v4
   with:
-    node-version: 20
+    # Astro 7 exige Node 22.12 o superior.
+    node-version: 22
 - run: npm ci
 - run: npm run build
   env:

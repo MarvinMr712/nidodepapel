@@ -39,7 +39,10 @@ jobs:
       - name: Instalar Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Astro 7 exige Node 22.12 o superior. Con Node 20 el build muere
+          # nada mas arrancar, asi que la version va fijada aqui y no se deja
+          # que setup-node elija la que encuentre.
+          node-version: 22
 
       - name: Instalar dependencias
         run: npm ci
