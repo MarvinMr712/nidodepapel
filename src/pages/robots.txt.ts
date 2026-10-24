@@ -1,19 +1,14 @@
-import { absoluta } from "@/lib/rutas";
+import type { APIRoute } from "astro";
+import { SITE } from "@/lib/catalogo";
 
-/**
- * robots.txt escrito en el build.
- *
- * En un sitio estático este archivo también se genera una sola vez y queda en
- * `dist/robots.txt`.
- */
-export function GET(): Response {
-  const texto =
-    `User-Agent: *\n` +
-    `Allow: /\n` +
-    `\n` +
-    `Sitemap: ${absoluta("/sitemap.xml")}\n`;
+export const GET: APIRoute = () => {
+  const body = `User-Agent: *
+Allow: /
 
-  return new Response(texto, {
+Sitemap: ${SITE.url}/sitemap.xml
+`;
+
+  return new Response(body, {
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
-}
+};

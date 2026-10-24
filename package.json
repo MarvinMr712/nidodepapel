@@ -1,34 +1,32 @@
 {
-  "name": "nido-de-papel",
-  "type": "module",
-  "version": "1.0.0",
+  "name": "casa-de-cuentos",
+  "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.23.4"
   },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "start": "astro preview",
     "check": "astro check",
-    "verificar": "npm run verificar:fuentes && npm run check && npm run build && npm run verificar:paginas && npm run verificar:scripts && npm run verificar:texto && npm run verificar:responsivo",
-    "verificar:fuentes": "node scripts/verificar-fuentes.mjs",
-    "verificar:paginas": "node scripts/verificar.mjs",
-    "verificar:scripts": "node scripts/verificar-scripts.mjs",
-    "verificar:texto": "node scripts/comparar-texto.mjs",
-    "verificar:responsivo": "node scripts/verificar-responsivo.mjs",
-    "astro": "astro"
+    "lint": "astro check"
   },
   "dependencies": {
-    "@fontsource/dm-serif-display": "^5.2.6",
-    "@fontsource/inter": "^5.2.6",
-    "astro": "^7.3.5"
+    "@astrojs/react": "^7.1.1",
+    "astro": "^7.4.2",
+    "motion": "^13.4.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@tailwindcss/vite": "^4.1.14",
-    "@types/node": "^26.6.4",
-    "tailwindcss": "^4.1.14",
-    "typescript": "^5.9.2"
+    "@astrojs/check": "^0.9.12",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

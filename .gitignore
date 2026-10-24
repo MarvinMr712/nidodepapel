@@ -1,30 +1,46 @@
-# Dependencias y carpeta de compilación
-node_modules/
-dist/
-.astro/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Datos personales: NUNCA subir. Cada ejemplar tiene un propietario con nombre
-# y apellido, y eso no va a un repositorio.
-src/data/*-privados.json
-src/data/libros-privados.json
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Variables de entorno
-.env
-.env.*
+# testing
+/coverage
+
+# Astro
+/.astro/
+/out/
+/dist/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# logs locales del servidor de desarrollo
+*.log
+
+# env files (can opt-in for committing if needed)
+# .env.example si se versiona a proposito: es la plantilla de configuracion.
+.env*
 !.env.example
 
-# Sistema y editores
-.DS_Store
-Thumbs.db
-Thumbs.db:encryptable
-*.swp
-.idea/
-.vscode/*
-!.vscode/extensions.json
+# Datos que NO deben salir de esta maquina.
+# Contiene el nombre del propietario de cada ejemplar. Si alguna vez se sube,
+# esos nombres quedan publicados de forma permanente, porque un repo publico
+# se puede copiar y los secretos rotos ya no se pueden recuperar.
+src/data/*-privados.json
 
-# Registros y salidas temporales
-*.log
-npm-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# typescript
 *.tsbuildinfo

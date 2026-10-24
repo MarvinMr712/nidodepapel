@@ -31,23 +31,26 @@ export const SITE = {
   descripcion:
     "Biblioteca rotativa de cuentos infantiles en Lima. Curaduría por edad, rotación mensual y devolución.",
   /**
-   * Dominio base.
+   * URL publica completa, con la subcarpeta si el sitio no vive en la raiz.
    *
-   * `import.meta.env.SITE` lo define Astro a partir de la opcion `site` de
-   * astro.config.mjs, que lee la variable SITE_URL del entorno.
-   *
-   * El valor por defecto es un marcador de posicion. Mientras no exista un
-   * dominio propio conviene dejarlo asi y cambiarlo al desplegar: sin la
-   * variable, el sitemap y los metadatos anunciarian una direccion que no
-   * pertenece a nadie, y eso confunde a los buscadores.
+   * Astro arma `import.meta.env.SITE` con el origen y `BASE_URL` con la
+   * subcarpeta configuradas en astro.config.mjs. Asi canonical, Open Graph,
+   * robots y sitemap coinciden con la direccion real de GitHub Pages.
    */
-  url: (import.meta.env.SITE || "https://TU-DOMINIO.example").replace(/\/+$/, ""),
-  /** Número local como se muestra (9 dígitos, Perú). */
+  url: (() => {
+    const origen = (import.meta.env.SITE || "").replace(/\/+$/, "");
+    const base = (import.meta.env.BASE_URL || "/").replace(/\/+$/, "");
+    return `${origen}${base === "/" ? "" : base}` || "https://marvinmr712.github.io/nidodepapel";
+  })(),
+  /** Numero local como se muestra (9 digitos, Peru). */
   whatsappVisible: "955 419 565",
-  /** wa.me exige prefijo de país sin signos: 51 + 9 dígitos. */
+  /** wa.me exige prefijo de pais sin signos: 51 + 9 digitos. */
   whatsapp: "51955419565",
   /** Correo de contacto. Se ajusta con PUBLIC_CONTACTO_EMAIL. */
-  email: import.meta.env.PUBLIC_CONTACTO_EMAIL || "hola@nidodepapel.pe",
+  email:
+    import.meta.env.PUBLIC_CONTACTO_EMAIL ||
+    import.meta.env.NEXT_PUBLIC_CONTACTO_EMAIL ||
+    "hola@nidodepapel.pe",
 } as const;
 
 /** Enlace de WhatsApp con mensaje precargado. */
@@ -188,17 +191,12 @@ export function totalTitulos(): number {
 }
 
 /**
- * Filtro unico del catalogo. Vive en un solo lugar para que el cliente y el
- * servidor nunca discrepen sobre que libros hay.
+ * Filtro unico del catalogo. Vive en un solo lugar para que el cliente
+ * y el servidor nunca discrepen sobre que libros hay.
  *
  * Todos los criterios salen de una lista cerrada: el visitante elige de un
  * desplegable y nunca escribe, asi no hay errores de tipeo ni resultados vacios
  * por escribir mal un nombre.
- *
- * En el navegador el mismo filtro corre sobre los atributos `data-*` de cada
- * tarjeta ya escritas en el HTML (ver src/scripts/catalogo.ts), en vez de
- * rehacer la lista. El resultado es identico y no obliga a descargar el
- * inventario completo para pintar un desplegable.
  */
 export function filtrar(f: Filtros): Libro[] {
   return filtrarPublico(getLibros(), f);
@@ -207,8 +205,9 @@ export function filtrar(f: Filtros): Libro[] {
 /**
  * El mismo filtro, pero sobre libros sin datos de ejemplares.
  *
- * Ambas funciones comparten la comparacion, asi los resultados no dependen de
- * donde se ejecuten.
+ * Es lo que corre en el navegador para que la pagina del catalogo pueda
+ * filtrar sin servidor. Ambas funciones comparten la comparacion, asi los
+ * resultados no dependen de donde se ejecute.
  */
 export function filtrarPublico(entrada: Libro[], f: Filtros): Libro[] {
   const salida = entrada.filter((l) => {

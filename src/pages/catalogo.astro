@@ -1,6 +1,7 @@
 ---
-import Base from "@/layouts/Base.astro";
-import Catalogo, { type Opciones } from "@/components/Catalogo.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Catalogo } from "@/components/Catalogo";
+import type { Opciones } from "@/components/Filtros";
 import {
   autoresDisponibles,
   formatosDisponibles,
@@ -12,14 +13,14 @@ import {
 } from "@/lib/catalogo";
 
 /**
- * Las listas de los desplegables y el catalogo se arman en el build y se
- * escriben en el HTML. El filtrado ocurre en el navegador, asi que la pagina se
- * prerenderiza entera y funciona en cualquier hosting estatico, donde no hay
- * servidor.
+ * Las listas de los desplegables y el catalogo se arman en el servidor y se
+ * pasan como props. El filtrado ocurre en el navegador, asi que el HTML se
+ * puede prerenderizar y la pagina funciona en un hosting estatico como
+ * GitHub Pages, donde no hay servidor.
  *
  * libros.json no trae el detalle de los ejemplares: ese esta en
- * libros-privados.json, que no se sube. Asi que lo que llega al navegador ya
- * viene limpio.
+ * libros-privados.json, que no se sube al repositorio. Asi que lo que llega al
+ * navegador ya viene limpio.
  */
 const OPCIONES: Opciones = {
   categoria: getCategorias().map((c) => ({ valor: c.slug, texto: c.nombre })),
@@ -35,7 +36,7 @@ const OPCIONES: Opciones = {
 const LIBROS = getLibros();
 ---
 
-<Base
+<Layout
   title="Catálogo completo"
   description="Los títulos de la biblioteca rotativa de Nido de Papel. Elige por categoría, edad, formato, autor o letra."
   canonical="/catalogo"
@@ -44,9 +45,10 @@ const LIBROS = getLibros();
     <h1 class="text-4xl sm:text-5xl mb-3">Catálogo</h1>
 
     <Catalogo
+      client:load
       libros={LIBROS}
       opciones={OPCIONES}
       totalTitulos={LIBROS.length}
     />
   </div>
-</Base>
+</Layout>

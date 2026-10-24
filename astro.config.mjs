@@ -1,42 +1,17 @@
-// @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
+import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 
-/**
- * Sitio estatico de Nido de Papel.
- *
- * Todo se genera por adelantado: no hay servidor, ni base de datos, ni API.
- * `output: "static"` hace que `npm run build` escriba el sitio completo en
- * `dist/`, listo para cualquier hosting estatico (GitHub Pages, Netlify,
- * Cloudflare Pages, un servidor de archivos...).
- *
- * `build.format: "directory"` escribe `catalogo/index.html` en vez de
- * `catalogo.html`. Es lo que necesita un hosting estatico: al recargar
- * `/catalogo` o al compartir ese enlace, el servidor encuentra el archivo y no
- * devuelve 404.
- *
- * Las dos variables de despliegue hacen que el sitio funcione igual en la raiz
- * de un dominio propio que en un subdirectorio de un repositorio de GitHub
- * Pages:
- *
- *   SITE_URL   Solo el origen: "https://tu-dominio.com". Sin ruta final.
- *   BASE_PATH  La subcarpeta, o "/" si el sitio vive en la raiz.
- *
- * Que `SITE_URL` sea solo el origen no es cosmetico: Astro espera ahi un origen,
- * y darle una ruta completa (`https://tu-dominio.github.io/mi-sitio`) deja el
- * build colgado sin un solo error en pantalla. Para tolerar esa forma, que es el
- * error mas facil de cometer al desplegar, la ruta se separa aqui y se pasa a
- * `base`, que es donde corresponde. Asi el build termina y las URLs salen
- * igual de correctas.
- */
-const normalizar = (/** @type {string | undefined | null} */ ruta) =>
+const normalizar = (ruta) =>
   ruta === undefined || ruta === null ? "" : "/" + String(ruta).replace(/^\/+|\/+$/g, "");
 
-/** SITE_URL partido en origen y subcarpeta, sin fallar si no es una URL valida. */
-const separar = (/** @type {string} */ bruto) => {
+const separar = (bruto) => {
   try {
     const url = new URL(bruto);
-    return { origen: url.origin, prefijo: normalizar(url.pathname) };
+    return {
+      origen: url.origin,
+      prefijo: url.pathname === "/" ? "" : normalizar(url.pathname),
+    };
   } catch {
     return { origen: bruto, prefijo: "" };
   }
@@ -45,32 +20,66 @@ const separar = (/** @type {string} */ bruto) => {
 /*
  * Valores por defecto: el sitio donde vive de verdad, en
  * https://marvinmr712.github.io/nidodepapel. Se dejan puestos para que un clon
- * recien bajado construya ya con las URLs correctas, sin tocar nada. Si algún
- * dia cambia el dominio o se publica en otro sitio, se ajustan SITE_URL y
- * BASE_PATH en el entorno (o en .env) y no hay que editar este archivo.
+ * recien bajado construya ya con las URLs correctas, sin tocar nada. Si algun
+ * dia cambia el dominio o se publica en otro sitio, se ajustan
+ * PUBLIC_SITE_URL y PUBLIC_BASE_PATH en el entorno (o en .env).
+ *
+ * `PUBLIC_SITE_URL` puede incluir la subcarpeta; en ese caso se separa aqui y
+ * se pasa a `base`, que es donde corresponde. Si se prefiere dar solo el
+ * origen, `PUBLIC_BASE_PATH` indica la subcarpeta. Para un dominio propio en la
+ * raiz, usar PUBLIC_SITE_URL=https://mi-dominio.com y PUBLIC_BASE_PATH=/.
  */
 const DOMINIO = "https://marvinmr712.github.io";
 const SUBCARPETA = "/nidodepapel";
 
-const bruto = String(process.env.SITE_URL || DOMINIO).replace(/\/+$/, "");
+const bruto = String(
+  process.env.PUBLIC_SITE_URL ||
+    process.env.SITE_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    DOMINIO,
+).replace(/\/+$/, "");
 const { origen, prefijo } = separar(bruto);
-const declarado = normalizar(process.env.BASE_PATH || SUBCARPETA);
 
-/* Si la subcarpeta ya venia en SITE_URL y BASE_PATH la repite, no la doblamos. */
+const baseDeclarada = process.env.PUBLIC_BASE_PATH ?? process.env.BASE_PATH;
 const base =
-  prefijo && declarado !== prefijo && !declarado.startsWith(`${prefijo}/`)
-    ? normalizar(prefijo + declarado)
-    : declarado || "/";
+  baseDeclarada !== undefined && baseDeclarada !== ""
+    ? normalizar(baseDeclarada)
+    : prefijo || SUBCARPETA;
 
 export default defineConfig({
   site: origen,
-  output: "static",
   base,
+  output: "static",
+  outDir: "./out",
   trailingSlash: "never",
   build: {
+    // /catalogo se escribe como catalogo/index.html, que es lo que
+    // GitHub Pages sirve sin necesitar un servidor.
     format: "directory",
   },
+  compressHTML: true,
+  integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
   },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "DM Serif Display",
+      cssVariable: "--font-dm-serif",
+      weights: [400],
+      styles: ["normal"],
+      subsets: ["latin"],
+      fallbacks: ["Georgia", "serif"],
+    },
+    {
+      provider: fontProviders.google(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: ["100 900"],
+      styles: ["normal"],
+      subsets: ["latin"],
+      fallbacks: ["system-ui", "sans-serif"],
+    },
+  ],
 });

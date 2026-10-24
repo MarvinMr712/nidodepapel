@@ -1,8 +1,6 @@
 ---
-import Base from "@/layouts/Base.astro";
-import AlAparecer from "@/components/AlAparecer.astro";
-import AlAparecerItem from "@/components/AlAparecerItem.astro";
-import Contador from "@/components/Contador.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Contador } from "@/components/Contador";
 import {
   DISTRITOS,
   PLANES,
@@ -84,9 +82,16 @@ const REGLAS = [
     a: "La biblioteca rotativa es solo en Lima. Los libros personalizados sí se envían a todo el Perú con Olva Express o Shalom.",
   },
 ];
+
+const cifras = [
+  { valor: copias, etiqueta: "copias en circulación" },
+  { valor: 1, etiqueta: "ciclo al mes" },
+  { valor: 3, etiqueta: "etapas de edad" },
+  { valor: DISTRITOS.length, etiqueta: "distritos con cobertura" },
+];
 ---
 
-<Base
+<Layout
   title="Cómo funciona"
   description="El ciclo mensual, los planes, las reglas de devolución y la cobertura por distrito de la biblioteca rotativa de Nido de Papel."
   canonical="/como-funciona"
@@ -94,227 +99,220 @@ const REGLAS = [
   {/* ------------------------------------------------------------ hero */}
   <section class="hero-fondo grano relative border-b border-linea">
     <div class="relative mx-auto max-w-6xl px-5 pt-24 pb-20">
-      <AlAparecer>
+      <div data-reveal>
         <p class="text-sm text-salvia-oscuro tracking-wide uppercase mb-6">
           Cómo funciona
         </p>
-      </AlAparecer>
+      </div>
 
-      <AlAparecer delay={0.06}>
+      <div data-reveal style="--reveal-delay: 60ms">
         <h1 class="text-5xl sm:text-6xl lg:text-7xl leading-[1.05] max-w-4xl">
           Un ciclo al mes.
-          <span class="block titulo-marca">Sin devolución no hay rotación.</span>
+          <span class="block titulo-marca">
+            Sin devolución no hay rotación.
+          </span>
         </h1>
-      </AlAparecer>
+      </div>
 
-      <AlAparecer delay={0.12}>
+      <div data-reveal style="--reveal-delay: 120ms">
         <p class="mt-7 text-lg text-tinta-suave max-w-2xl leading-relaxed">
-          Todo el sistema se apoya en una sola cosa: que el libro vuelve. A cambio te
-          prometemos con qué rotar cada mes. Estas son las reglas completas, sin
-          letra chica.
+          Todo el sistema se apoya en una sola cosa: que el libro vuelve. A
+          cambio te prometemos con qué rotar cada mes. Estas son las reglas
+          completas, sin letra chica.
         </p>
         <p class="mt-5 font-serif text-2xl sm:text-3xl text-salvia-oscuro">
           {SITE.lema}
         </p>
-      </AlAparecer>
+      </div>
 
-      <AlAparecer delay={0.18}>
-        <dl class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-linea">
-          {
-            [
-              [String(copias), "copias en circulación"],
-              ["1", "ciclo al mes"],
-              ["3", "etapas de edad"],
-              [String(DISTRITOS.length), "distritos con cobertura"],
-            ].map(([n, l]) => (
-              <div>
-                <dt class="font-serif text-4xl text-salvia-oscuro">
-                  <Contador valor={Number(n)} />
-                </dt>
-                <dd class="text-sm text-tinta-suave mt-1">{l}</dd>
-              </div>
-            ))
-          }
+      <div data-reveal style="--reveal-delay: 180ms">
+        <dl
+          class="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 pt-10 border-t border-linea"
+        >
+          {cifras.map((c) => (
+            <div>
+              <dt class="font-serif text-4xl text-salvia-oscuro">
+                <Contador client:visible valor={c.valor} />
+              </dt>
+              <dd class="text-sm text-tinta-suave mt-1">{c.etiqueta}</dd>
+            </div>
+          ))}
         </dl>
-      </AlAparecer>
+      </div>
     </div>
   </section>
 
   {/* --------------------------------------------------------- el ciclo */}
   <section class="mx-auto max-w-6xl px-5 py-24">
-    <AlAparecer>
+    <div data-reveal>
       <h2 class="text-4xl sm:text-5xl mb-3">El ciclo, paso a paso</h2>
       <p class="text-tinta-suave max-w-2xl leading-relaxed mb-16">
         Lo que pasa desde que te inscribes hasta que recibes el segundo kit.
       </p>
-    </AlAparecer>
+    </div>
 
     <ol class="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        CICLO.map((p, i) => (
-          <AlAparecerItem delay={i * 0.05}>
-            <div class="border-t-2 border-salvia/25 pt-5">
-              <p class="font-serif text-4xl text-salvia/30 mb-3">{p.n}</p>
-              <h3 class="text-xl mb-2">{p.titulo}</h3>
-              <p class="text-sm text-tinta-suave leading-relaxed">{p.texto}</p>
-            </div>
-          </AlAparecerItem>
-        ))
-      }
+      {CICLO.map((p, i) => (
+        <li data-reveal style={`--reveal-delay: ${i * 50}ms`}>
+          <div class="border-t-2 border-salvia/25 pt-5">
+            <p class="font-serif text-4xl text-salvia/30 mb-3">{p.n}</p>
+            <h3 class="text-xl mb-2">{p.titulo}</h3>
+            <p class="text-sm text-tinta-suave leading-relaxed">{p.texto}</p>
+          </div>
+        </li>
+      ))}
     </ol>
   </section>
 
   {/* ----------------------------------------------------------- planes */}
   <section class="bg-papel border-y border-linea">
     <div class="mx-auto max-w-6xl px-5 py-24">
-      <AlAparecer>
+      <div data-reveal>
         <h2 class="text-4xl sm:text-5xl mb-3">Dos planes</h2>
         <p class="text-tinta-suave max-w-2xl leading-relaxed mb-16">
-          La diferencia no es el precio, es cuántos libros entran al mes y si tienes
-          acceso a la curaduría ampliada.
+          La diferencia no es el precio, es cuántos libros entran al mes y si
+          tienes acceso a la curaduría ampliada.
         </p>
-      </AlAparecer>
+      </div>
 
       <div class="grid gap-6 md:grid-cols-2">
-        {
-          PLANES.map((p, i) => (
-            <AlAparecer delay={i * 0.08}>
-              <div
-                class:list={[
-                  "tarjeta h-full rounded-2xl border bg-crema p-8",
-                  p.destacado ? "border-salvia-oscuro/40 shadow-sm" : "border-linea",
-                ]}
-              >
-                {p.destacado && (
-                  <p class="inline-block text-xs text-papel bg-coral-oscuro rounded-full px-3 py-1 mb-4">
-                    Más elegido
-                  </p>
-                )}
-
-                <h3 class="text-2xl mb-1">{p.nombre}</h3>
-                <p class="text-sm text-tinta-suave mb-6">{p.para}</p>
-
-                <p class="mb-6">
-                  <span class="font-serif text-5xl titulo-marca">S/{p.precio}</span>
-                  <span class="text-sm text-tinta-suave"> / mes</span>
-                  {p.precioAnterior && (
-                    <span class="ml-3 text-sm text-tinta-suave line-through">
-                      S/{p.precioAnterior}
-                    </span>
-                  )}
+        {PLANES.map((p, i) => (
+          <div data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+            <div
+              class={`tarjeta h-full rounded-2xl border bg-crema p-8 ${
+                p.destacado
+                  ? "border-salvia-oscuro/40 shadow-sm"
+                  : "border-linea"
+              }`}
+            >
+              {p.destacado && (
+                <p class="inline-block text-xs text-papel bg-coral-oscuro rounded-full px-3 py-1 mb-4">
+                  Más elegido
                 </p>
+              )}
 
-                <ul class="space-y-3 mb-8">
-                  {p.incluye.map((x) => (
-                    <li class="flex gap-3 text-sm">
-                      <span aria-hidden="true" class="text-salvia-oscuro shrink-0">
-                        ✓
-                      </span>
-                      <span class="text-tinta-suave">{x}</span>
-                    </li>
-                  ))}
-                </ul>
+              <h3 class="text-2xl mb-1">{p.nombre}</h3>
+              <p class="text-sm text-tinta-suave mb-6">{p.para}</p>
 
-                <a
-                  href={enlaceWhatsApp(
-                    `Hola, quiero el ${p.nombre} (S/${p.precio}/mes).`,
-                  )}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class:list={[
-                    "boton inline-flex items-center justify-center w-full px-6 py-3.5 rounded-full text-sm transition-colors",
-                    p.destacado
-                      ? "bg-salvia-oscuro text-papel hover:bg-[#556339]"
-                      : "border border-salvia-oscuro/40 text-salvia-oscuro hover:bg-salvia/10",
-                  ]}
-                >
-                  Quiero el {p.nombre}
-                </a>
-              </div>
-            </AlAparecer>
-          ))
-        }
+              <p class="mb-6">
+                <span class="font-serif text-5xl titulo-marca">
+                  S/{p.precio}
+                </span>
+                <span class="text-sm text-tinta-suave"> / mes</span>
+                {p.precioAnterior && (
+                  <span class="ml-3 text-sm text-tinta-suave line-through">
+                    S/{p.precioAnterior}
+                  </span>
+                )}
+              </p>
+
+              <ul class="space-y-3 mb-8">
+                {p.incluye.map((x) => (
+                  <li class="flex gap-3 text-sm">
+                    <span aria-hidden="true" class="text-salvia-oscuro shrink-0">
+                      ✓
+                    </span>
+                    <span class="text-tinta-suave">{x}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={enlaceWhatsApp(
+                  `Hola, quiero el ${p.nombre} (S/${p.precio}/mes).`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`boton inline-flex items-center justify-center w-full px-6 py-3.5 rounded-full text-sm transition-colors ${
+                  p.destacado
+                    ? "bg-salvia-oscuro text-papel hover:bg-[#556339]"
+                    : "border border-salvia-oscuro/40 text-salvia-oscuro hover:bg-salvia/10"
+                }`}
+              >
+                Quiero el {p.nombre}
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   {/* ------------------------------------------------------ por edad */}
   <section class="mx-auto max-w-6xl px-5 py-24">
-    <AlAparecer>
+    <div data-reveal>
       <h2 class="text-4xl sm:text-5xl mb-3">Cómo curamos por edad</h2>
       <p class="text-tinta-suave max-w-2xl leading-relaxed mb-14">
-        No serves todos los libros a todos. Cada etapa se arma con lo que el niño
-        puede sostener en ese momento.
+        No serves todos los libros a todos. Cada etapa se arma con lo que el
+        niño puede sostener en ese momento.
       </p>
-    </AlAparecer>
+    </div>
 
     <div class="grid gap-6 sm:grid-cols-3">
-      {
-        etapas.map((e, i) => (
-          <AlAparecer delay={i * 0.07}>
-            <div class="tarjeta h-full rounded-xl border border-linea bg-papel p-7">
-              <p class="text-xs text-salvia-oscuro mb-2">{rangoEtapa(e)} años</p>
-              <h3 class="text-xl mb-2">{e.nombre}</h3>
-              <p class="text-sm text-tinta-suave leading-relaxed">{e.descripcion}</p>
-            </div>
-          </AlAparecer>
-        ))
-      }
+      {etapas.map((e, i) => (
+        <div data-reveal style={`--reveal-delay: ${i * 70}ms`}>
+          <div class="tarjeta h-full rounded-xl border border-linea bg-papel p-7">
+            <p class="text-xs text-salvia-oscuro mb-2">
+              {rangoEtapa(e)} años
+            </p>
+            <h3 class="text-xl mb-2">{e.nombre}</h3>
+            <p class="text-sm text-tinta-suave leading-relaxed">
+              {e.descripcion}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
   {/* ---------------------------------------------------------- reglas */}
   <section class="bg-papel border-y border-linea">
     <div class="mx-auto max-w-4xl px-5 py-24">
-      <AlAparecer>
+      <div data-reveal>
         <h2 class="text-4xl sm:text-5xl mb-14">Reglas, sin letra chica</h2>
-      </AlAparecer>
+      </div>
 
       <dl class="space-y-0">
-        {
-          REGLAS.map((r, i) => (
-            <AlAparecer delay={i * 0.04}>
-              <div class="border-t border-linea py-7">
-                <dt class="font-serif text-xl mb-2">{r.q}</dt>
-                <dd class="text-sm text-tinta-suave leading-relaxed">{r.a}</dd>
-              </div>
-            </AlAparecer>
-          ))
-        }
+        {REGLAS.map((r, i) => (
+          <div data-reveal style={`--reveal-delay: ${i * 40}ms`}>
+            <div class="border-t border-linea py-7">
+              <dt class="font-serif text-xl mb-2">{r.q}</dt>
+              <dd class="text-sm text-tinta-suave leading-relaxed">{r.a}</dd>
+            </div>
+          </div>
+        ))}
       </dl>
     </div>
   </section>
 
   {/* ------------------------------------------------------- cobertura */}
   <section class="mx-auto max-w-6xl px-5 py-24">
-    <AlAparecer>
+    <div data-reveal>
       <h2 class="text-4xl sm:text-5xl mb-3">Dónde entregamos</h2>
       <p class="text-tinta-suave max-w-2xl leading-relaxed mb-10">
-        Entrega y recojo dentro de estos {DISTRITOS.length} distritos. Si el tuyo no
-        está, escríbenos y vemos la forma.
+        Entrega y recojo dentro de estos {DISTRITOS.length} distritos. Si el tuyo
+        no está, escríbenos y vemos la forma.
       </p>
-    </AlAparecer>
+    </div>
 
-    <AlAparecer delay={0.08}>
+    <div data-reveal style="--reveal-delay: 80ms">
       <ul class="flex flex-wrap gap-2.5">
-        {
-          DISTRITOS.map((d) => (
-            <li class="rounded-full border border-linea bg-papel px-4 py-2 text-sm hover:border-salvia/60 hover:text-salvia-oscuro transition-colors">
-              {d}
-            </li>
-          ))
-        }
+        {DISTRITOS.map((d) => (
+          <li class="rounded-full border border-linea bg-papel px-4 py-2 text-sm hover:border-salvia/60 hover:text-salvia-oscuro transition-colors">
+            {d}
+          </li>
+        ))}
       </ul>
-    </AlAparecer>
+    </div>
 
-    <AlAparecer delay={0.14}>
+    <div data-reveal style="--reveal-delay: 140ms">
       <div class="mt-16 rounded-2xl bg-tinta text-crema p-10 sm:p-14">
         <h2 class="text-3xl sm:text-4xl text-papel mb-3">
           ¿Listo para la primera rotación?
         </h2>
         <p class="text-crema/75 max-w-xl leading-relaxed mb-8">
-          Escríbenos por WhatsApp con la edad de tu hijo y el distrito. Te decimos si
-          hay cupo y armamos el primer kit.
+          Escríbenos por WhatsApp con la edad de tu hijo y el distrito. Te
+          decimos si hay cupo y armamos el primer kit.
         </p>
         <a
           href={wa}
@@ -325,14 +323,6 @@ const REGLAS = [
           Escribir al {SITE.whatsappVisible}
         </a>
       </div>
-    </AlAparecer>
+    </div>
   </section>
-
-  <script>
-    import { observarApariciones } from "@/scripts/apariciones";
-    import { observarContadores } from "@/scripts/contadores";
-
-    observarApariciones();
-    observarContadores();
-  </script>
-</Base>
+</Layout>

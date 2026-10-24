@@ -1,8 +1,4 @@
-export type EstadoCopia =
-  | "disponible"
-  | "prestado"
-  | "limpieza"
-  | "mantenimiento";
+export type EstadoCopia = "disponible" | "prestado" | "limpieza" | "mantenimiento";
 
 /**
  * Un titulo del catalogo. Asi esta en src/data/libros.json, el unico archivo de

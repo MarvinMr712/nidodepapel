@@ -1,91 +1,96 @@
 # Nido de Papel
 
-Sitio estatico, generado con Astro. Reemplaza al proyecto anterior en Next.js y
-produce el mismo HTML, con las mismas 186 paginas, sin servidor.
+Sitio de la biblioteca rotativa de cuentos infantiles en Lima.
 
-## Arrancar
+> Pequeños lectores, grandes vuelos.
+
+## Qué es
+
+Un catálogo público de 172 títulos que rotan por edad. El visitante elige su
+rango de edad, ve los libros disponibles y arma su kit. No hay carrito ni pagos:
+la reserva se termina conversando por WhatsApp.
+
+## Stack
+
+- Astro 7 con salida estática y TypeScript
+- React 19 para las islas interactivas (`@astrojs/react`)
+- Tailwind CSS 4 mediante `@tailwindcss/vite`
+- `motion` para las animaciones, con `prefers-reduced-motion` respetado
+- Sin base de datos: los datos son un JSON
+
+Requiere Node 22.23.4 o superior.
+
+## Puesta en marcha
 
 ```bash
 npm install
 npm run dev
 ```
 
-Queda en `http://localhost:4321`.
+Queda en http://localhost:4321/nidodepapel/
 
-## Verificar
+## Publicar
+
+El build siempre es estático y escribe la carpeta `out/`:
 
 ```bash
-npm run verificar
+npm run build
 ```
 
-Encadena seis comprobaciones y se detiene en la primera que falle:
+El workflow `.github/workflows/desplegar-pages.yml` ya publica en GitHub Pages
+solo, con el repositorio en `main`. El sitio queda en
+https://marvinmr712.github.io/nidodepapel/.
 
-| Paso | Que revisa |
+### Configuración
+
+Copia `.env.example` a `.env` y ajusta:
+
+| Variable | Para qué sirve |
 | --- | --- |
-| `verificar:fuentes` | Caracteres invisibles, restos de una edicion a medias, CSS desbalanceado y saltos de linea mezclados. |
-| `check` | Tipos de Astro y TypeScript. |
-| `build` | Genera `dist/`. |
-| `verificar:paginas` | Recuento de paginas, sitemap, enlaces internos, contadores y datos personales. |
-| `verificar:scripts` | Sintaxis del JavaScript que se inserta en las paginas, y los bloques JSON-LD. |
-| `verificar:texto` | Que las 107 frases del proyecto anterior sigan apareciendo en el HTML. |
-| `verificar:responsivo` | Que toda variante `sm:`, `md:`, `lg:` o `min-[...]` usada en el HTML exista de verdad en el CSS, y que ninguna anchura fija se salga de una pantalla de 360 px. |
+| `PUBLIC_SITE_URL` | URL pública completa, con subcarpeta si aplica |
+| `PUBLIC_BASE_PATH` | Subcarpeta del sitio; `/` para un dominio en la raíz |
+| `PUBLIC_CONTACTO_EMAIL` | Correo de contacto |
 
-Los pasos que requeriren `dist/` se pueden lanzar por separado despues de un
-`npm run build`.
+Por defecto el sitio usa `https://marvinmr712.github.io/nidodepapel` y
+`/nidodepapel`, que es donde publica GitHub Pages. Los nombres antiguos
+`NEXT_PUBLIC_SITE_URL` y `NEXT_PUBLIC_CONTACTO_EMAIL` se siguen aceptando como
+respaldo.
 
-## Desplegar
+## Datos
 
-Dos variables deciden como quedan las URLs. Copia `.env.example` a `.env` y
-ajustalas:
+Hay dos archivos de catálogo y la diferencia importa:
 
-```ini
-SITE_URL=https://tu-dominio.com
-BASE_PATH=/
-PUBLIC_CONTACTO_EMAIL=hola@nidodepapel.pe
+- **`src/data/libros.json`** — se sube al repositorio. Títulos, autores, edad,
+  categoría, formato. Es lo único que usa el sitio.
+- **`src/data/libros-privados.json`** — **no se sube**, está en `.gitignore`.
+  El detalle de cada ejemplar: código, estado y nombre de quien lo tiene.
+
+Si clonaste el repositorio en otra máquina, copia a mano el segundo archivo o el
+conteo de ejemplares aparecerá como 0.
+
+## Estructura
+
+```
+src/
+  pages/          rutas: /, /catalogo, /etapas, /libros/[slug], /categorias...
+  layouts/        Layout.astro con header, footer y metadatos
+  components/     islas React y piezas reutilizables
+  styles/         globals.css: tokens, animaciones y utilidades
+  data/           los dos archivos de catálogo
+  lib/
+    catalogo.ts   acceso a datos, filtros y SITE
+    types.ts      tipos
+public/           logo, imagen para compartir, favicon
+scripts/          utilidades de mantenimiento (leer scripts/README.md)
 ```
 
-- `SITE_URL`: **solo el origen, sin ruta**, y es el dominio y protocolo
-  definitivos. Entra en los enlaces canonicos, en `sitemap.xml`, en
-  `robots.txt` y en los datos de Open Graph. Si se deja el valor de ejemplo, el
-  sitio funciona pero publica URLs con un dominio de mentira.
-- `BASE_PATH`: subcarpeta del sitio. En la raiz es `/`. Si el proyecto se
-  publica en `https://tu-usuario.github.io/nido-de-papel`, entonces:
+## Comandos
 
-  ```ini
-  SITE_URL=https://tu-usuario.github.io
-  BASE_PATH=/nido-de-papel
-  ```
-
-La subcarpeta va en `BASE_PATH` y **no** en `SITE_URL`. Astro espera un origen
-en `site`; darle ahi una ruta completa (`https://tu-usuario.github.io/nido-de-papel`)
-deja `npm run build` colgado de forma indefinida y sin imprimir un solo error.
-`astro.config.mjs` separa la subcarpeta si se la pone por error y la pasa a
-`base`, pero lo correcto es escribirla en `BASE_PATH`.
-
-Para desplegar en GitHub Pages hay que aadir un paso antes del build:
-
-```yaml
-- uses: actions/checkout@v4
-- uses: actions/setup-node@v4
-  with:
-    # Astro 7 exige Node 22.12 o superior.
-    node-version: 22
-- run: npm ci
-- run: npm run build
-  env:
-    SITE_URL: https://tu-usuario.github.io
-    BASE_PATH: /nido-de-papel
-- uses: actions/upload-pages-artifact@v3
-  with:
-    path: dist
-```
-
-Ambas variables tienen que estar definidas tambien al desplegar. Si no,
-`SITE_URL` cae en el dominio de ejemplo y las URLs absolutas salen mal.
-
-## Datos personales
-
-`src/data/` trae unicamente informacion publica. Los datos de los ejemplares
-con nombre de propietario se leen de un archivo que vive fuera de este proyecto
-y **no se copian aqui**. Si alguna vez se autoriza incluirlos, el `.gitignore`
-ya esta preparado para que no acaben en el repositorio.
+| Comando | Qué hace |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo |
+| `npm run check` | Revisa tipos y errores de Astro |
+| `npm run lint` | Alias de `npm run check` |
+| `npm run build` | Build estático en `out/` |
+| `npm run preview` | Sirve el build estático |
+| `npm start` | Alias de `npm run preview` |
